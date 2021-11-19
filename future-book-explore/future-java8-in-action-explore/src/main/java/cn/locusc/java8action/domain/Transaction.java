@@ -8,4 +8,8 @@ public class Transaction {
     private int price;
     private Currency currency;
 
+    public void getValue() {
+
+    }
+
 }

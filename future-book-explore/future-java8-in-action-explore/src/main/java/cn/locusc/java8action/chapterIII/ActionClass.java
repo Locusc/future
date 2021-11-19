@@ -1,16 +1,19 @@
 package cn.locusc.java8action.chapterIII;
 
 import cn.locusc.java8action.domain.Apple;
+import cn.locusc.java8action.domain.Fruit;
+import cn.locusc.java8action.domain.Orange;
+import cn.locusc.java8action.domain.Transaction;
 
 import java.awt.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
+import java.util.*;
 import java.util.List;
+import java.util.concurrent.Callable;
 import java.util.function.*;
+import java.util.prefs.PreferenceChangeListener;
 
 /**
  * @author Jay
@@ -183,8 +186,84 @@ public class ActionClass {
         public static void main(String[] args) {
 
             List<Apple> inventory = Apple.getApples();
+            // lambda表达式
+            inventory.sort((a1, a2) -> a1.getWeight().compareTo(a2.getWeight()));
+            // 方法引用
+            inventory.sort(Comparator.comparing(Apple::getWeight));
 
 
+            // 如何构建方法引用 方法引用主要有三类。
+            // 指向静态方法的方法引用
+            ToIntFunction<String> stringIntegerFunction = Integer::parseInt;
+            // 指向任意类型实例方法的方法引用
+            // 引用一个对象的方法 而这个对象本身是lambda的一个参数
+            ToIntFunction<String> stringIntegerFunction1 = String::length;
+            // 指向现有对象的实例方法的方法引用
+            // 调用一个已经存在的外部对象中的方法
+            Transaction expensiveTransaction = new Transaction();
+            Runnable runnable = expensiveTransaction::getValue;
+
+
+            // 针对构造函数、数组构造函数和父类调用（super-call）的一些特殊形式的方法引用
+            List<String> str = Arrays.asList("a","b","A","B");
+            str.sort((s1, s2) -> s1.compareToIgnoreCase(s2));
+            str.sort(String::compareToIgnoreCase);
+
+            // practice 等效的方法引用
+            Function<String, Integer> stringToInteger =
+                    (String s) -> Integer.parseInt(s);
+            Function<String, Integer> stringToIntegerMr = Integer::parseInt;
+
+            BiPredicate<List<String>, String> contains =
+                    (list, element) -> list.contains(element);
+            BiPredicate<List<String>, String> containsMr =
+                    List::contains;
+
+
+            // 构造函数引用
+            // 一个构造函数没有参数。它适合Supplier的签名() -> Apple。
+            Supplier<Apple> aNew1 = Apple::new;
+            Apple apple = aNew1.get();
+            // 等价于
+            Supplier<Apple> aNew2 = () -> new Apple();
+            Apple apple1 = aNew2.get();
+
+            // 一个参数的构造方法
+            Function<Integer, Apple> aNew = Apple::new;
+            // 等价于
+            Function<Integer, Apple> tConsumer = (weight) -> new Apple(weight);
+
+            // 由Integer构成的List中的每个元素都通过我们前面定义的类似的map方法传递给了Apple的构造函数，得到了一个具有不同重量苹果的List
+            List<Integer> weights = Arrays.asList(7, 3, 4, 10);
+            map(weights, Apple::new);
+
+            // 两个参数的构造函数
+            BiFunction<String, Integer, Apple> c3 = Apple::new;
+            c3.apply("red", 100);
+
+            // 不使用构造函数实例化
+            Fruit apple2 = giveMeFruit("apple", 1000, "red");
+            System.out.println(apple2);
+        }
+
+        static Map<String, BiFunction<String, Integer, Fruit>> map = new HashMap<>();
+
+        static {
+            map.put("apple", Apple::new);
+            map.put("orange", Orange::new);
+        }
+
+        public static Fruit giveMeFruit(String fruit, Integer weight, String color) {
+            return map.get(fruit.toLowerCase()).apply(color, weight);
+        }
+
+        public static List<Apple> map(List<Integer> list,
+                                      Function<Integer, Apple> f) {
+            ArrayList<Apple> apples = new ArrayList<>();
+            for (Integer integer : list) {
+                apples.add(f.apply(integer));
+            }
+            return apples;
         }
 
     }
