@@ -189,6 +189,17 @@ public class ActionClass {
                 // .findAny()
                 .findFirst();
 
+
+        // 归约 将流归约成一个值
+        // 函数式编程语言的术语来说，这称为折叠（fold），因为你可以将这个操作看成把一张长长的纸（你的流）反复折叠成一个小方块，而这就是折叠操作的结果
+        // old 元素求和
+        int sum = 0;
+        for (int x :numbers) {
+            sum += x;
+        }
+        // new reduce求和
+        numbers.stream().reduce(0, (a, b) -> a + b);
+
     }
 
 }
