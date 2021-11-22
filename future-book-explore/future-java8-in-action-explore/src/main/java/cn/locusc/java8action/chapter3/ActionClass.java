@@ -1,19 +1,16 @@
-package cn.locusc.java8action.chapterIII;
+package cn.locusc.java8action.chapter3;
 
 import cn.locusc.java8action.domain.Apple;
 import cn.locusc.java8action.domain.Fruit;
 import cn.locusc.java8action.domain.Orange;
 import cn.locusc.java8action.domain.Transaction;
 
-import java.awt.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 import java.util.List;
-import java.util.concurrent.Callable;
 import java.util.function.*;
-import java.util.prefs.PreferenceChangeListener;
 
 /**
  * @author Jay

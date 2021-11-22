@@ -1,4 +1,4 @@
-package cn.locusc.java8action.chapterI;
+package cn.locusc.java8action.chapter1;
 
 import cn.locusc.java8action.domain.Apple;
 import com.alibaba.fastjson.JSON;

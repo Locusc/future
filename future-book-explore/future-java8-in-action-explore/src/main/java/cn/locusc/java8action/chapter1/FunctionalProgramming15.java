@@ -1,4 +1,4 @@
-package cn.locusc.java8action.chapterI;
+package cn.locusc.java8action.chapter1;
 
 import java.util.Optional;
 

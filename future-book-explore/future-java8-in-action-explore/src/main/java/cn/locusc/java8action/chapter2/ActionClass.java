@@ -1,4 +1,4 @@
-package cn.locusc.java8action.chapterII;
+package cn.locusc.java8action.chapter2;
 
 import cn.locusc.java8action.domain.Apple;
 

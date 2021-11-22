@@ -1,4 +1,4 @@
-package cn.locusc.java8action.chapterVUseStream;
+package cn.locusc.java8action.chapter5UseStream;
 
 import cn.locusc.java8action.domain.Trader;
 import cn.locusc.java8action.domain.Transaction54;

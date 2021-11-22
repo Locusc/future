@@ -1,4 +1,4 @@
-package cn.locusc.java8action.chapterIVStream;
+package cn.locusc.java8action.chapter4Stream;
 
 import cn.locusc.java8action.domain.Dish;
 
