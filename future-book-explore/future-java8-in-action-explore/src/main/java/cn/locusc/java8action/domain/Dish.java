@@ -3,6 +3,7 @@ package cn.locusc.java8action.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,6 +19,8 @@ import java.util.stream.Stream;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Dish {
+
+    public enum CaloricLevel { DIET, NORMAL, FAT }
 
     public enum Type {
         MEAT,
@@ -53,6 +56,10 @@ public class Dish {
                 new Dish("pizza", true, 550, Dish.Type.OTHER),
                 new Dish("prawns", false, 300, Dish.Type.FISH),
                 new Dish("salmon", false, 450, Dish.Type.FISH) );
+    }
+
+    public String toString() {
+        return this.getName();
     }
 
 }
