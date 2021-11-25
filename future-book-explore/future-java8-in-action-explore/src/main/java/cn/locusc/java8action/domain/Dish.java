@@ -3,7 +3,6 @@ package cn.locusc.java8action.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -60,6 +59,12 @@ public class Dish {
 
     public String toString() {
         return this.getName();
+    }
+
+    public static CaloricLevel getCaloricLevel(Dish dish) {
+        if (dish.getCalories() <= 400) return Dish.CaloricLevel.DIET;
+        else if (dish.getCalories() <= 700) return Dish.CaloricLevel.NORMAL;
+        else return Dish.CaloricLevel.FAT;
     }
 
 }

@@ -469,7 +469,16 @@ public class ActionClass {
                 }
 
                 // 可以把一些元素划出去分给第二个Spliterator（由该方法返回），让它们两个并行处理
-
+                // 它定义了拆分要遍历的数据结构的逻辑
+                // 首先要设定不再进一步拆分的下限。这里用了一个非常低的下
+                //限——10个Character，仅仅是为了保证程序会对那个比较短的String做几次拆分。
+                //在实际应用中，就像分支/合并的例子那样，你肯定要用更高的下限来避免生成太多的
+                //任务。如果剩余的Character数量低于下限，你就返回null表示无需进一步拆分。相
+                //反，如果你需要执行拆分，就把试探的拆分位置设在要解析的String块的中间。但我
+                //们没有直接使用这个拆分位置，因为要避免把词在中间断开，于是就往前找，直到找到
+                //一个空格。一旦找到了适当的拆分位置，就可以创建一个新的Spliterator来遍历从
+                //当前位置到拆分位置的子串；把当前位置this设为拆分位置，因为之前的部分将由新
+                //Spliterator来处理，最后返回
                 @Override
                 public java.util.Spliterator<Character> trySplit() {
                     int currentSize = string.length() - currentChar;
@@ -496,11 +505,17 @@ public class ActionClass {
                 }
 
                 // 估计还剩下多少元素要遍历，因为即使不那么确切，能快速算出来是一个值也有助于让拆分均匀一点。
+                // String的总长度和当前遍历的位置的差
                 @Override
                 public long estimateSize() {
                     return string.length() - currentChar;
                 }
 
+                // Spliterator是ORDERED（顺序就是String中各个Character的次序）
+                // SIZED（estimatedSize方法的返回值是精确的）
+                // SUBSIZED（trySplit方法创建的其他Spliterator也有确切大小）
+                // NONNULL（String中不能有为 null 的 Character ）
+                // IMMUTABLE （在解析 String 时不能再添加Character，因为String本身是一个不可变类）的
                 @Override
                 public int characteristics() {
                     return ORDERED + SIZED + SUBSIZED + NONNULL + IMMUTABLE;
@@ -539,7 +554,7 @@ public class ActionClass {
                 // 3. 运用WordCounterSpliterator
                 java.util.Spliterator<Character> spliterator = new WordCounterSpliterator("jay chan is the best");
                 Stream<Character> streamSupport = StreamSupport.stream(spliterator, true);
-
+                // （延迟绑定）可以在第一次遍历、第一次拆分或第一次查询估计大小时绑定元素的数据源，而不是在创建时就绑定
                 System.out.println("Found " + countWords(streamSupport) + " words");
             }
         }
