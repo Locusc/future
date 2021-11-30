@@ -9,17 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>future-book-explore</artifactId>
-    <description>读书笔记</description>
+    <artifactId>future-english-notebook</artifactId>
 
-    <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-    </properties>
-
-    <modules>
-        <module>future-java8-in-action-explore</module>
-        <module>future-english-notebook</module>
-    </modules>
 
 </project>
