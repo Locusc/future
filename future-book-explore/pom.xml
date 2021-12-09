@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>future-book-explore</artifactId>
+    <packaging>pom</packaging>
     <description>读书笔记</description>
 
     <properties>
@@ -20,6 +21,7 @@
     <modules>
         <module>future-java8-in-action-explore</module>
         <module>future-english-notebook</module>
+        <module>future-spring-framework-explore</module>
     </modules>
 
 </project>
