@@ -9,14 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>future-book-explore</artifactId>
-    <packaging>pom</packaging>
-    <description>读书笔记</description>
+    <artifactId>future-spring-series-explore</artifactId>
+    <description>spring系列</description>
 
     <modules>
-        <module>future-java8-in-action-explore</module>
-        <module>future-english-notebook</module>
-        <module>future-spring-deep-analysis-explore</module>
+        <module>future-spring-framework-explore</module>
     </modules>
-
 </project>

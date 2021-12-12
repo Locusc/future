@@ -13,9 +13,4 @@
     <name>future-mybatis-explore</name>
     <description>mybatis底层探索</description>
 
-    <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-    </properties>
-
 </project>

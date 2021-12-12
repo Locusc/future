@@ -12,12 +12,17 @@
     <name>future</name>
     <description>笔记本</description>
 
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+
     <modules>
         <module>future-mybatis-explore</module>
         <module>future-dependencies</module>
         <module>future-java-explore</module>
         <module>future-book-explore</module>
         <module>future-data-structure-algorithm</module>
-
+        <module>future-spring-series-explore</module>
     </modules>
 </project>
