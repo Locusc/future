@@ -63,7 +63,7 @@ public class StreamFork<T> {
         }
 
         void finish() {
-            accept((T) END_OF_STREAM);
+            this.accept((T) END_OF_STREAM);
         }
 
     }
@@ -120,12 +120,12 @@ public class StreamFork<T> {
         @Override
         public boolean tryAdvance(Consumer<? super T> action) {
             T t;
-            while (true) {
+            for(;;) {
                 try {
                     t = q.take();
                     break;
                 }
-                catch (InterruptedException e) {
+                catch (InterruptedException ignored) {
                 }
             }
             if (t != ForkingStreamConsumer.END_OF_STREAM) {
