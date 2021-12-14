@@ -1,4 +1,4 @@
-package cn.locusc.spring.deep.analysis.chapter2;
+package cn.locusc.spring.deep.analysis.chapter2.code;
 
 public class MyTestBean {
     private String testStr = "testStr";
