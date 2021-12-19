@@ -354,7 +354,11 @@ public class ActionClass {
         // 递归式的阶乘计算
         // 第二段代码以更加类数学的形式给出一个递归方法（方法调用自身）的实现。
         public static long factorialRecursive(long n) {
-            return n == 1 ? 1 : n * factorialRecursive(n);
+            return n == 1 ? 1 : n * factorialRecursive(n - 1);
+        }
+
+        public static void main(String[] args) {
+            System.out.println(factorialRecursive(4));
         }
 
         // 基于Stream的阶乘
