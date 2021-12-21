@@ -84,11 +84,8 @@ public class SelectionSort {
     }
 
     public static void main(String[] args) {
-        long start = System.nanoTime();
         DataChecker.check(tackleEnhance(), 100_000);
 //        DataChecker.check(tackle(), 100_000);
-        System.out.println("tackleEnhance: "
-                + ((System.nanoTime() - start) / 1_000_000) + " msecs");
 
     }
 
