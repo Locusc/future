@@ -84,9 +84,8 @@ public class SelectionSort {
     }
 
     public static void main(String[] args) {
-        DataChecker.check(tackleEnhance(), 100_000);
+        //DataChecker.check(tackleEnhance(), 100_000);
 //        DataChecker.check(tackle(), 100_000);
-
     }
 
 }
