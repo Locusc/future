@@ -34,6 +34,7 @@ public class SortPractice {
 
     /**
      * 插入2
+     * 12.22 插入排序内层 遍历的是已经排好序的列表
      * @return java.util.function.Consumer<int[]>
      */
     public static Consumer<int[]> insertion2() {
