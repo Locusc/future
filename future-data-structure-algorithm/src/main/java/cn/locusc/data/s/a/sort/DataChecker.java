@@ -25,29 +25,29 @@ public class DataChecker {
         return arr;
     }
 
-    public static void check(Consumer<int[]> tackle, int length, int repeat) {
+    public static void check(Consumer<int[]> tackle, int length, int repeat, boolean print) {
         boolean same = true;
         for (int j = 0; j < repeat; j++) {
             int[] arr = generateRandomArray(length);
-            same = isSame(tackle, same, arr);
+            same = isSame(tackle, same, arr, print);
         }
 
         System.out.println(same ? "RIGHT" : "WRONG");
 
     }
 
-    public static void check(Function<int[], int[]> tackle, int length, int repeat, int range) {
+    public static void check(Function<int[], int[]> tackle, int length, int repeat, int range, boolean print) {
         boolean same = true;
         for (int j = 0; j < repeat; j++) {
             int[] arr = generateRandomCountArray(length, range);
-            same = isSame(tackle, same, arr);
+            same = isSame(tackle, same, arr, print);
         }
 
         System.out.println(same ? "RIGHT" : "WRONG");
 
     }
 
-    private static boolean isSame(Function<int[], int[]> tackle, boolean same, int[] arr) {
+    private static boolean isSame(Function<int[], int[]> tackle, boolean same, int[] arr, boolean print) {
         int[] arr2 = new int[arr.length];
         System.arraycopy(arr, 0, arr2, 0, arr.length);
 
@@ -59,7 +59,7 @@ public class DataChecker {
                 + ((System.nanoTime() - start) / 1_000_000) + " msecs");
 
 
-        for (int i = 0; i < arr2.length; i++) {
+        for (int i = 0; i < apply.length; i++) {
             if (arr[i] != apply[i]) {
                 System.out.println("arr:" + arr[i] + " arr2:" + apply[i]);
                 same = false;
@@ -67,14 +67,14 @@ public class DataChecker {
             }
         }
 
-        if(!same) {
+        if(print) {
             System.out.println(Arrays.toString(arr));
             System.out.println(Arrays.toString(arr2));
         }
         return same;
     }
 
-    private static boolean isSame(Consumer<int[]> tackle, boolean same, int[] arr) {
+    private static boolean isSame(Consumer<int[]> tackle, boolean same, int[] arr, boolean print) {
         int[] arr2 = new int[arr.length];
         System.arraycopy(arr, 0, arr2, 0, arr.length);
 
@@ -94,7 +94,7 @@ public class DataChecker {
             }
         }
 
-        if(!same) {
+        if(print) {
             System.out.println(Arrays.toString(arr));
             System.out.println(Arrays.toString(arr2));
         }

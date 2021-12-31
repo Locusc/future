@@ -185,12 +185,12 @@ public class SortPractice {
         //DataChecker.check(insertion, 10_000);
 
         Consumer<int[]> shell = shell();
-        //shell.accept(arr);
+        //shellshell.accept(arr);
         //DataChecker.check(shell, 10_000);
 
         Consumer<int[]> merge = merge(0, arrMerge.length - 1);
         //merge.accept(arrMerge);
-        DataChecker.check(merge(0, 100_000 - 1), 100_000);
+        DataChecker.check(merge(0, 100_000 - 1), 100_000, 1, true);
         //combine(arrMerge, 1, 4, 6);
 
         //MergeSort.merge(arrMerge, 1, 4, 6);

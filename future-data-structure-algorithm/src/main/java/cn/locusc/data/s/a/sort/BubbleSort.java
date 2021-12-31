@@ -37,7 +37,7 @@ public class BubbleSort {
         Consumer<int[]> tackle = tackle();
         tackle.accept(arr);
 
-        DataChecker.check(tackle(), 500_000);
+        DataChecker.check(tackle(), 500_000, 1, true);
     }
 
 }

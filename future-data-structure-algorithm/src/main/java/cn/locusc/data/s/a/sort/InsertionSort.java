@@ -58,7 +58,7 @@ public class InsertionSort {
         Consumer<int[]> tackle = tackle();
         tackle.accept(arr);
 
-        DataChecker.check(tackleEnhance(), 10000);
+        DataChecker.check(tackleEnhance(), 10000, 1, true);
     }
 
 }
