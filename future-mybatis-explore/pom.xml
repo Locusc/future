@@ -10,7 +10,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>future-mybatis-explore</artifactId>
+    <packaging>pom</packaging>
     <name>future-mybatis-explore</name>
     <description>mybatis底层探索</description>
+
+    <modules>
+        <module>future-mybatis-lagos-explore</module>
+    </modules>
 
 </project>

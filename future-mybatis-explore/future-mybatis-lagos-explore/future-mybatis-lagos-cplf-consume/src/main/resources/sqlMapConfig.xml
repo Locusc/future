@@ -1,0 +1,8 @@
+<configuration>
+    <property name="diverClass" value="com.mysql.jdbc.Driver"></property>
+    <property name="jdbcUrl" value="jdbc:mysql://39.107.96.199:3306/mercy"></property>
+    <property name="username" value="root"></property>
+    <property name="password" value="wdnmd123"></property>
+
+    <mapper resource="userMapper.xml"></mapper>
+</configuration>
