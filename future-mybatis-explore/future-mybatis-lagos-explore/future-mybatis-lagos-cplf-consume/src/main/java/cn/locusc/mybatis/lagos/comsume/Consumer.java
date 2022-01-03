@@ -32,6 +32,9 @@ public class Consumer {
         IUserDao userDao = sqlSession.getMapper(IUserDao.class);
         List<User> users = userDao.findAll();
         users.forEach(f -> System.out.println(f.toString()));
+
+        User byCondition = userDao.findByCondition(user);
+        System.out.println(byCondition.toString());
     }
 
 }

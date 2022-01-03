@@ -1,9 +1,9 @@
-<mapper namespace="user">
-    <select id="selectOne" parameterType="cn.locusc.mybatis.lagos.comsume.pojo.User" resultType="cn.locusc.mybatis.lagos.comsume.pojo.User">
+<mapper namespace="cn.locusc.mybatis.lagos.comsume.dao.IUserDao">
+    <select id="findByCondition" parameterType="cn.locusc.mybatis.lagos.comsume.pojo.User" resultType="cn.locusc.mybatis.lagos.comsume.pojo.User">
         select * from sys_user where id = #{id} and account_name = #{account_name}
     </select>
 
-    <select id="selectList" resultType="cn.locusc.mybatis.lagos.comsume.pojo.User">
+    <select id="findAll" resultType="cn.locusc.mybatis.lagos.comsume.pojo.User">
         select * from sys_user
     </select>
 </mapper>
