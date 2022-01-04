@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--  namespace: 名称空间(与id组成sql唯一标识)  -->
+<mapper namespace="cn.locusc.mybatis.lagos.action.dao.IUserDao">
+
+    <!--  抽取sql片段  -->
+    <sql id="selectUser">
+        select * from sys_user
+    </sql>
+
+    <!--  resultType: 表明返回值类型  -->
+    <select id="findAll" resultType="uSeR">
+        <include refid="selectUser"/>
+    </select>
+
+    <select id="findByCondition" resultType="user">
+        select * from sys_user
+        <!--  where: 拼接where关键字 并且去掉第一个and  -->
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="username != null">
+                and username = #{username}
+            </if>
+        </where>
+    </select>
+
+    <select id="findByIds" parameterType="list" resultType="user">
+        <include refid="selectUser"/>
+        <where>
+            <!--  open: where后面的开始符  -->
+            <foreach collection="array" open="id in (" close=")" item="id"
+                separator=",">
+                #{id}
+            </foreach>
+        </where>
+    </select>
+
+    <!--  parameterType: 参数类型  -->
+    <!--  表名和实体名不一致时必须声明sys_user(id,account_name)  -->
+    <insert id="saveUser" parameterType="user">
+        insert into sys_user(id,account_name) values(#{id},#{account_name})
+    </insert>
+
+    <update id="updateUser" parameterType="UsEr">
+        update sys_user set account_name = #{account_name} where id = #{id}
+    </update>
+
+    <delete id="deleteUser" parameterType="long">
+        delete from sys_user where id = #{abc}
+    </delete>
+</mapper>

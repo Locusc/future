@@ -1,0 +1,45 @@
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <!--  加载外部properties文件  -->
+    <properties resource="jdbc.properties"/>
+    
+    <settings>
+        <!--  开启二级缓存  -->
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+
+    <!--  给实体类的全限定类名给别名  -->
+    <typeAliases>
+        <!--  给单独的实体别名 实体较多不建议  -->
+<!--        <typeAlias type="cn.locusc.mybatis.lagos.action.pojo.User" alias="user"/>-->
+        <!--  批量别名, 该包下所有的类的本身的类名(别名不区分大小写)  -->
+        <!--  基础数据类型别名对应小写 Long -> long Integer -> int  -->
+        <package name="cn.locusc.mybatis.lagos.action.pojo"/>
+    </typeAliases>
+
+    <!--  设置运行环境  -->
+    <environments default="development">
+        <environment id="development">
+            <!--  当前事务交由JDBC进行管理  -->
+            <transactionManager type="JDBC"/>
+            <!--  当前使用mybatis提供的连接池 UNPOOLED(不使用连接池) -->
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--  引入映射配置文件  -->
+    <mappers>
+        <mapper resource="UserMapper.xml"/>
+        <!--  使用注解也需要加载资源  -->
+        <!--  <mapper class="cn.locusc.mybatis.lagos.action.mapper.IUserMapper" />  -->
+        <!--  批量加载, 使用package必须保证接口和对应的映射文件同包同名  -->
+        <package name="cn.locusc.mybatis.lagos.action.mapper"/>
+    </mappers>
+</configuration>
