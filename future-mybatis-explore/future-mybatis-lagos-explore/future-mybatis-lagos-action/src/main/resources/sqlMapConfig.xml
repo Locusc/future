@@ -7,7 +7,7 @@
     
     <settings>
         <!--  开启二级缓存  -->
-        <setting name="cacheEnabled" value="true"/>
+        <setting name="cacheEnabled" value="false"/>
     </settings>
 
     <!--  给实体类的全限定类名给别名  -->
@@ -18,6 +18,19 @@
         <!--  基础数据类型别名对应小写 Long -> long Integer -> int  -->
         <package name="cn.locusc.mybatis.lagos.action.pojo"/>
     </typeAliases>
+    
+    <plugins>
+        <plugin interceptor="cn.locusc.mybatis.lagos.action.plugins.MyPlugin">
+            <property name="name" value="jay"/>
+        </plugin>
+        <plugin interceptor="com.github.pagehelper.PageHelper">
+            <property name="dialect" value="mysql"/>
+        </plugin>
+        <plugin interceptor="tk.mybatis.mapper.mapperhelper.MapperInterceptor">
+            <!--  指定当前通用mapper接口使用哪一个  -->
+            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+        </plugin>
+    </plugins>
 
     <!--  设置运行环境  -->
     <environments default="development">

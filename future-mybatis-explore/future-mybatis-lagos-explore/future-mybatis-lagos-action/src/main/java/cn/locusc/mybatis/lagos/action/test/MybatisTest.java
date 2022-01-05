@@ -1,4 +1,4 @@
-package cn.locusc.mybatis.lagos.action.consume;
+package cn.locusc.mybatis.lagos.action.test;
 
 import cn.locusc.mybatis.lagos.action.dao.IUserDao;
 import cn.locusc.mybatis.lagos.action.impl.IUserDaoImpl;

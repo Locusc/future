@@ -2,7 +2,6 @@ package cn.locusc.mybatis.lagos.action.mapper;
 
 import cn.locusc.mybatis.lagos.action.pojo.User;
 import org.apache.ibatis.annotations.*;
-import org.apache.ibatis.cache.impl.PerpetualCache;
 import org.mybatis.caches.redis.RedisCache;
 
 import java.util.List;

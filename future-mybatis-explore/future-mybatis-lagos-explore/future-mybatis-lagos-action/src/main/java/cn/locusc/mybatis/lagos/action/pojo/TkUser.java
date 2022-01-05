@@ -14,21 +14,7 @@ import java.util.List;
  * 2021/8/19
  */
 @Table(name = "sys_user")
-public class User implements Serializable {
-
-    // 该用户具有的用户信息
-    List<Order> orderList;
-
-    // 表示用户关联的角色
-    List<Role> roleList;
-
-    public List<Role> getRoleList() {
-        return roleList;
-    }
-
-    public void setRoleList(List<Role> roleList) {
-        this.roleList = roleList;
-    }
+public class TkUser implements Serializable {
 
     /**
      * 主键
@@ -51,14 +37,6 @@ public class User implements Serializable {
      * 用户名
      */
     private String username;
-
-    public List<Order> getOrderList() {
-        return orderList;
-    }
-
-    public void setOrderList(List<Order> orderList) {
-        this.orderList = orderList;
-    }
 
     /**
      * 头像地址

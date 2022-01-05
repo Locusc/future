@@ -1,4 +1,4 @@
-package cn.locusc.mybatis.lagos.action.consume;
+package cn.locusc.mybatis.lagos.action.test;
 
 import cn.locusc.mybatis.lagos.action.mapper.IOrderMapper;
 import cn.locusc.mybatis.lagos.action.mapper.IUserMapper;
