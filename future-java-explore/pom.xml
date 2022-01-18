@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>future-java-explore</artifactId>
+    <description>java相关</description>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
