@@ -11,6 +11,7 @@
 
     <artifactId>future-mybatis-lagou-explore</artifactId>
     <packaging>pom</packaging>
+    <description>lagos教材</description>
 
     <modules>
         <module>future-mybatis-lagos-cplf</module>
