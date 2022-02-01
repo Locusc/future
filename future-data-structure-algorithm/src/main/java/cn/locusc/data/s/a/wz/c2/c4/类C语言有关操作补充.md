@@ -116,7 +116,7 @@ void swap(float *m, float *n) {
 void main() {
     float a, b, *p1, *p2;
     cin >> a >> b;
-    p1 = &a; p2 = &b;
+    p1 = &a; p2 = &b; // 这里的&表示取地址运算符
     swap(p1, p2);
     count<<a<<end<<b<<endl;
 }
