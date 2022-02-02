@@ -392,3 +392,130 @@ void CreateList_R(Link &L, int n) {
 }
 算法时间复杂度尾O(n)
 ```
+
+2.5.3 循环链表
+循环链表: 是一种头尾相接的链表(即: 表中最后一个结点的指针域指向头结点, 整个链表形成一个环).
+![循环链表.jpg](images/循环链表.jpg)
+优点: 从表中任一结点出发均可找到表中其他结点
+注意: 由于循环链表中没有NULL指针, 固涉及遍历操作时, 其终止条件不再像非循环链表那样
+判断p或p->next是否为空, 而是判断它们是否等于头指针
+
+循环条件(由判断指针是否为空, 变为指针是否为头指针):
+p! = NULL - p! = L;
+p -> next != NULL - p -> next != L
+
+头指针表示单循环链表:
+    1.找a1的时间复杂度: O(1)
+    2.找an的时间复杂度: O(n)
+    不方便
+    
+注意: 表的操作常常是在表的首尾位置上进行.
+尾指针表示单循环链表(单循环链表利用尾指针可以快速找到头结点, 然后利用头结点找到首元结点):
+    1.a1的存储位置是: R -> next -> next
+    2.an的存储位置是: R
+    时间复杂度: O(1)
+![尾指针表示单循环链表.jpg](images/尾指针表示单循环链表.jpg)
+
+带尾指针循环链表的合并(将Tb并在Ta之后)
+分析有那些操作
+    1.p存表头结点(因为Ta要接b1, 会丢失头结点) p = Ta -> next
+    2.Tb表头连接到Ta表尾 Ta -> next = Tb -> next -> next
+    3.释放Tb表头结点 delete Tb -> next
+    4.修改指针 Tb -> next = p
+![带尾指针循环链表的合并.jpg](images/带尾指针循环链表的合并.jpg)
+```
+LinkList Connect(LinkList Ta, LinkList Tb) {
+    // 假设Ta, Tb都是非空的单循环链表
+    // 1.p存表头结点
+    p = Ta -> next;
+    // 2.Tb表头连接Ta表尾
+    Ta -> next = Tb -> next -> next;
+    // 3.释放Tb表头结点
+    delete Tb -> next; // free(Tb -> next);
+    // 4.修改指针
+    Tb -> next = p;
+}
+时间复杂度是O(1)
+```
+
+2.5.4 双向链表
+为什么要讨论双向链表:
+单链表的结点->有指示后继的指针域->找后继结点方便;
+即: 查找某结点的后继结点的执行时间为(O1)
+->无指示前驱的指针域->找前驱结点难: 从表头出发查找
+即: 查找某结点的前驱结点的执行时间为O(n) 可以用双向链表来克服单链表这种缺点
+
+双向链表: 在单链表的每个结点里再增加一个指向其直接前驱的指针
+域prior, 这样链表中就形成了有两个方向不同的链, 故称为双向链表
+双向链表的结点结构
+[prior|data|next]
+双向链表的结构可定义如下:
+```
+typedef struct DuLNode {
+    Elemtype data;
+    struct DuLNode *prior,*next;
+} DuLnode, *DuLinkList
+```
+![双向链表的结构定义.jpg](images/双向链表的结构定义.jpg)
+
+双向循环链表
+和单链的循环表类似, 双向链表也可以有循环表
+    1.让头结点的前驱指针指向链表的最后一个结点
+    2.让最后一个结点的后继指针指向头结点
+![双向循环链表.jpg](images/双向循环链表.jpg)   
+
+双向链表结构的对称性(设指针p指向某一结点)
+p -> prior -> next = p = p -> next -> prior
+在双向链表中有些操作(如: ListLength, GetElem等), 因仅涉及一个方向的指针,
+故它们的算法与线性链表的相同. 但在插入、删除时, 则需同时修改两个方向上的指针,
+两者的操作的时间复杂度均为O(n)
+![双向链表结构的对称性.jpg](images/双向链表结构的对称性.jpg)
+
+双向链表的插入
+算法2.13 双向链表的插入
+1. s -> prior = p -> prior;
+2. p -> prior -> next = s;
+3. s -> next = p;
+4. p -> prior = s;
+![双向链表的插入.jpg](images/双向链表的插入.jpg)
+```
+void ListInsert_DuL(DuLinkList &L, Int i, ElemType e) {
+    // 在带头结点的双向循环链表L中第i个位置之前插入元素e
+    if(!(p=GetElemP_Dul(L, i))) {
+        return ERROR;
+    }
+    S = new DuLNode;
+    s -> data = e;
+    s -> prior = p -> prior;
+    p -> prior -> next = s;
+    s -> next = p;
+    p -> prior = s;
+    return OK;
+} // ListInsert_DuL
+// 时间复杂度为O(n) 参考删除的时间复杂度
+```
+
+算法2.13 双向链表的删除
+1.p -> prior -> next = p -> next;
+2.p -> next -> prior = p -> prior;
+![双向链表的删除.jpg](images/双向链表的删除.jpg)
+```
+void ListDelete_Dul(DuLink &L, Int i, ElemType &e) {
+    // 删除带头结点的双向循环链表L的第i个元素, 并用e返回
+    if(!(p=GetElemP_DuL(L, i))) {
+        return ERROR;
+    }
+    e = p -> data;
+    p -> prior -> next = p -> next;
+    p -> next -> prior = p -> prior;
+    free(p);
+    return OK;
+} // ListDelete_DuL;
+// 虽然删除的时间复杂度是O(1), 因为直接交换指针, 释放内存
+// 但是存在查找操作, 查找操作的时间复杂度是O(n), 那么抛弃常数项, 高次项为n
+// 那么删除的时间复杂度还是O(n)
+```
+
+单链表、循环链表和双向链表的时间效率比较
+![单链表-循环链表-双向链表的时间效率比较.jpg](images/单链表-循环链表-双向链表的时间效率比较.jpg)
+
