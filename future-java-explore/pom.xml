@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>future-java-explore</artifactId>
+    <packaging>pom</packaging>
     <description>java相关</description>
 
     <properties>
@@ -19,6 +20,7 @@
 
     <modules>
         <module>future-jdk-explore</module>
+        <module>future-java-design-pattern</module>
     </modules>
 
 </project>

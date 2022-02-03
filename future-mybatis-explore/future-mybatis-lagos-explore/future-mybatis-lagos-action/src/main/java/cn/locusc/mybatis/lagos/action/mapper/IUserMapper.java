@@ -17,6 +17,8 @@ public interface IUserMapper {
     // 查询所有用户 同时查询每个用户关联的角色信息
     List<User> findAllUserAndRole();
 
+    User findById(Long id);
+
     // 添加用户
     @Insert("insert into sys_user(id,account_name) values(#{id},#{account_name})")
     void addUser(User user);

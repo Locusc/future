@@ -8,7 +8,11 @@
     <resultMap id="userMap" type="cn.locusc.mybatis.lagos.action.pojo.User">
         <id property="id" column="id"/>
         <result property="account_name" column="account_name"/>
-        <collection property="orderList" ofType="cn.locusc.mybatis.lagos.action.pojo.Order">
+        <collection property="orderList" ofType="cn.locusc.mybatis.lagos.action.pojo.Order"
+            select="cn.locusc.mybatis.lagos.action.mapper.IOrderMapper.findByUId" column="id"
+            fetchType="lazy">
+            <!-- fetchType="eager"立即加载
+                 fetchType="lazy"懒加载 -->
             <id property="id" column="oid"/>
             <result property="orderTime" column="orderTime"/>
             <result property="total" column="total"/>
@@ -34,5 +38,9 @@
         select * from sys_user u
         left join test_user_role ur on u.id = ur.user_id
         left join test_role r on r.id = ur.role_id
+    </select>
+
+    <select id="findById" parameterType="java.lang.Long" resultMap="userMap">
+        select * from sys_user where id = #{id};
     </select>
 </mapper>

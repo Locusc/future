@@ -24,4 +24,8 @@
         select * from test_order o, sys_user u where o.uid = u.id
     </select>
 
+    <select id="findByUId" resultType="cn.locusc.mybatis.lagos.action.pojo.Order">
+        select * from test_order o where o.uid = #{uid};
+    </select>
+
 </mapper>

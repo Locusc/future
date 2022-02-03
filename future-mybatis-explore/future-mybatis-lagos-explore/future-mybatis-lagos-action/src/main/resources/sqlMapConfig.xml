@@ -8,6 +8,11 @@
     <settings>
         <!--  开启二级缓存  -->
         <setting name="cacheEnabled" value="true"/>
+        <!--  开启全局延迟加载功能  -->
+        <!--  如果开启全局延迟加载那么一对多 一对一也会延迟加载  -->
+        <!--  可以在collection标签设置fetchType属性加载  -->
+        <!--  因为局部加载策略高于全局加载策略  -->
+<!--        <setting name="lazyLoadingEnabled" value="true"/>-->
     </settings>
 
     <!--  给实体类的全限定类名给别名  -->
