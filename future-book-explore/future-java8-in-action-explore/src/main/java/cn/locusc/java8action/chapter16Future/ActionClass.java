@@ -3,6 +3,7 @@ package cn.locusc.java8action.chapter16Future;
 import cn.locusc.java8action.domain.Apple;
 
 import java.util.Arrays;
+import java.util.Stack;
 
 /**
  * @author Jay
@@ -31,6 +32,8 @@ public class ActionClass {
         add[1] = 10;
 
         System.out.println(Arrays.toString(test));
+
+        Stack<Object> objects = new Stack<>();
     }
 
 }
