@@ -3,18 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>future</artifactId>
+        <artifactId>future-spring-lagos-explore</artifactId>
         <groupId>cn.locusc</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>future-spring-series-explore</artifactId>
-    <packaging>pom</packaging>
-    <description>spring系列</description>
+    <artifactId>future-spring-ioc-custom-lagos-explore</artifactId>
 
-    <modules>
-        <module>future-spring-framework-explore</module>
-        <module>future-spring-lagos-explore</module>
-    </modules>
+    <description>自定义IOC和AOP</description>
 </project>
