@@ -12,8 +12,10 @@
     <artifactId>future-spring-lagos-explore</artifactId>
     <packaging>pom</packaging>
     <description>lagos-spring教材</description>
+
     <modules>
         <module>future-spring-ioc-custom-lagos-explore</module>
+        <module>future-spring-ioc-transfer-lagos-explore</module>
     </modules>
 
 </project>
