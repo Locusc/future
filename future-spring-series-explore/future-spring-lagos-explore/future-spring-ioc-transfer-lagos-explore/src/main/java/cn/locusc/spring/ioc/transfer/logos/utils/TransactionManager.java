@@ -9,38 +9,38 @@ import java.sql.SQLException;
  */
 public class TransactionManager {
 
-    private ConnectionUtils connectionUtils;
+    // private ConnectionUtils connectionUtils;
 
-    public void setConnectionUtils(ConnectionUtils connectionUtils) {
-        this.connectionUtils = connectionUtils;
-    }
+    // public void setConnectionUtils(ConnectionUtils connectionUtils) {
+    //     this.connectionUtils = connectionUtils;
+    // }
 
-    /*private TransactionManager(){
+    private TransactionManager(){
 
     }
 
     private static TransactionManager transactionManager = new TransactionManager();
 
     public static TransactionManager getInstance() {
-        return  transactionManager;
-    }*/
+        return transactionManager;
+    }
 
 
 
     // 开启手动事务控制
     public void beginTransaction() throws SQLException {
-        connectionUtils.getCurrentThreadConn().setAutoCommit(false);
+        ConnectionUtils.getInstance().getCurrentThreadConnection().setAutoCommit(false);
     }
 
 
     // 提交事务
     public void commit() throws SQLException {
-        connectionUtils.getCurrentThreadConn().commit();
+        ConnectionUtils.getInstance().getCurrentThreadConnection().commit();
     }
 
 
     // 回滚事务
     public void rollback() throws SQLException {
-        connectionUtils.getCurrentThreadConn().rollback();
+        ConnectionUtils.getInstance().getCurrentThreadConnection().rollback();
     }
 }

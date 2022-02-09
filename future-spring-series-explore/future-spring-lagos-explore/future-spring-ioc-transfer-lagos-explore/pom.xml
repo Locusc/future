@@ -7,6 +7,7 @@
         <groupId>cn.locusc</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+    <packaging>war</packaging>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>future-spring-ioc-transfer-lagos-explore</artifactId>

@@ -1,5 +1,6 @@
 package cn.locusc.spring.ioc.transfer.logos.servlet;
 
+import cn.locusc.spring.ioc.transfer.logos.factory.BeanFactory;
 import cn.locusc.spring.ioc.transfer.logos.service.impl.TransferServiceImpl;
 import cn.locusc.spring.ioc.transfer.logos.utils.JsonUtils;
 import cn.locusc.spring.ioc.transfer.logos.pojo.Result;
@@ -19,7 +20,8 @@ import java.io.IOException;
 public class TransferServlet extends HttpServlet {
 
     // 1. 实例化service层对象
-    private TransferService transferService = new TransferServiceImpl();
+    // private TransferService transferService = new TransferServiceImpl();
+    private TransferService transferService = (TransferService) BeanFactory.getBean("transferService");
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
