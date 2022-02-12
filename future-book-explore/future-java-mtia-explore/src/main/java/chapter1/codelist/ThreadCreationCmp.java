@@ -46,6 +46,7 @@ public class ThreadCreationCmp {
                 this.doSomething();
                 counter.increment();
             }
+            System.out.println(Thread.currentThread().getName());
             System.out.println("CountingTask :" + counter.value());
 
         }
@@ -66,6 +67,7 @@ public class ThreadCreationCmp {
                 this.doSomething();
                 counter.increment();
             }
+            System.out.println(Thread.currentThread().getName());
             System.out.println("CountingThread :" + counter.value());
         }
 
