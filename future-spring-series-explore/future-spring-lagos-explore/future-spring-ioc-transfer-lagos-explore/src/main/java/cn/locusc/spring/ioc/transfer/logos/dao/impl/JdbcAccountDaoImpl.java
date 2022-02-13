@@ -19,7 +19,6 @@ public class JdbcAccountDaoImpl implements AccountDao {
         this.connectionUtils = connectionUtils;
     }
 
-
     public void init() {
         System.out.println("初始化方法.....");
     }
@@ -32,7 +31,8 @@ public class JdbcAccountDaoImpl implements AccountDao {
     public Account queryAccountByCardNo(String cardNo) throws Exception {
         //从连接池获取连接
         // Connection con = DruidUtils.getInstance().getConnection();
-        Connection con = ConnectionUtils.getInstance().getCurrentThreadConnection();
+        // Connection con = ConnectionUtils.getInstance().getCurrentThreadConnection();
+        Connection con = connectionUtils.getCurrentThreadConnection();
         String sql = "select * from account where cardNo=?";
         PreparedStatement preparedStatement = con.prepareStatement(sql);
         preparedStatement.setString(1,cardNo);
@@ -57,8 +57,9 @@ public class JdbcAccountDaoImpl implements AccountDao {
 
         // 从连接池获取连接
         // 改造为从当前线程获取绑定的connection连接
-        Connection con = ConnectionUtils.getInstance().getCurrentThreadConnection();
+        //Connection con = ConnectionUtils.getInstance().getCurrentThreadConnection();
         // Connection con = DruidUtils.getInstance().getConnection();
+        Connection con = connectionUtils.getCurrentThreadConnection();
         String sql = "update account set money=? where cardNo=?";
         PreparedStatement preparedStatement = con.prepareStatement(sql);
         preparedStatement.setInt(1,account.getMoney());

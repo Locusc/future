@@ -1,10 +1,10 @@
 package cn.locusc.spring.ioc.transfer.logos.servlet;
 
 import cn.locusc.spring.ioc.transfer.logos.factory.BeanFactory;
-import cn.locusc.spring.ioc.transfer.logos.service.impl.TransferServiceImpl;
-import cn.locusc.spring.ioc.transfer.logos.utils.JsonUtils;
+import cn.locusc.spring.ioc.transfer.logos.factory.ProxyFactory;
 import cn.locusc.spring.ioc.transfer.logos.pojo.Result;
 import cn.locusc.spring.ioc.transfer.logos.service.TransferService;
+import cn.locusc.spring.ioc.transfer.logos.utils.JsonUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,7 +21,18 @@ public class TransferServlet extends HttpServlet {
 
     // 1. 实例化service层对象
     // private TransferService transferService = new TransferServiceImpl();
-    private TransferService transferService = (TransferService) BeanFactory.getBean("transferService");
+    // private TransferService transferService = (TransferService) BeanFactory.getBean("transferService");
+
+    // 从工厂获取委托对象(委托对象是增强了事务控制的功能)
+    // private TransferService transferService = (TransferService) ProxyFactory.getInstance().getJdkProxy(
+    //        BeanFactory.getBean("transferService")
+    // );
+
+    // 首先从BeanFactory获取到proxyFactory代理工厂的实例化对象
+    private ProxyFactory proxyFactory = (ProxyFactory) BeanFactory.getBean("proxyFactory");
+    private TransferService transferService = (TransferService) proxyFactory.getJdkProxy(
+            BeanFactory.getBean("transferService")
+    );
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
