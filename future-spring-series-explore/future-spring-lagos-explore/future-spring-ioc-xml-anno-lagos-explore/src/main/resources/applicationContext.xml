@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+				http://www.springframework.org/schema/beans/spring-beans.xsd
+                http://www.springframework.org/schema/context
+				http://www.springframework.org/schema/beans/spring-context.xsd"
+>
+    <!--  开启注解扫描, base-package指定扫描包路径  -->
+    <context:component-scan base-package="cn.locusc.spring.ioc.xml.anno.logos" />
+
+    <!--  第三方jar中的bean定义在xml文件中  -->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://39.107.96.199:3306/mercy"/>
+        <property name="username" value="root"/>
+        <property name="password" value="wdnmd123"/>
+    </bean>
+
+</beans>
