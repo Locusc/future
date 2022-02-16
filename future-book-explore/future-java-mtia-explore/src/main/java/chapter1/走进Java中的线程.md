@@ -181,6 +181,14 @@ Java线程的优先级属性本质上只是一个给线程调度器的提示信�
 饿(Thread Starvation). 因此, 线程的优先级并不是设置得越高越好,
 一般情况下使用普通优先级即可, 不必设置线程的优先级属性
 
+按照线程是否会阻止Java虚拟机正常停止, 我们可以将Java中的线程分为守护线程
+(Daemon Thread)和用户线程(User Thread, 也称非守护线程)线程的daemon属性用
+于表示相应线程是否为守护线程, 用户线程会阻止Java虚拟机的正常停止, 即Java
+虚拟机只有在其所有用户线程都运行结束(即Thread.run()调用未结束)的情况下才能正
+常停止, 而守护线程则不会影响Java虚拟机的正常停止, 即应用程序中有守护线程在运
+行也不影响Java虚拟机的正常停止. 因此, 守护线程通常用于执行一些重要性不是很高
+的任务, 例如用于监视其他线程的运行情况
+
 如果Java虚拟机是被强制停止的, 比如在Linux系统下使用kill命令强制终止
 Java虚拟机进程, 那么即使是用户线程也无法阻止Java虚拟机的停止
 Java虚拟机正常停止指不是通过System.exit调用也不是通过强制终止进程(如在Linux系统下使
@@ -211,4 +219,24 @@ chapter1.codelist.SimpleTimer
 ##### 1.3.5 Thread类的一些废弃方法
 由于Java虚拟机实现得有些问题, 因此Thread类的有些方法已经被废弃(Deprecated)了
 在新写的代码中应该避免使用这些方法. 部分废弃的方法如表1-3所示
-![1-3-Thread类的一些废弃方法.png](images/1-3-Thread类的一些废弃方法.png)
+![1-3-Thread类的一些废弃方法.png](images/1-3-Thread类的一些废弃方法.jpg)
+虽然表1-3的有些方法并没有相应的替代品, 即实现同样功能的其他方法: 但是, 停
+止线程以及暂停和继续运行线程这些功能我们可以使用其他办法来实现.详情请参见本书
+的第
+
+
+#### 1.4 无处不在的线程
+Java平台本身就是－个多线程的平台, 除了Java开发人员自己创建和使用的线程(
+即Thread 类或其子类的实例), Java平台中其他由Java虚拟机创建、使用的线程也随处可见
+当然, 这些线程也是各自有其处理任务.
+
+Java虚拟机启动的时候会创建一个main线程, 该线程负责执行Java程序的入口方法
+(main方法), 如清单1-7所示
+清单1-7 Java代码的执行线程
+chapter1.codelist.JavaThreadAnywhere
+利用currentThread方法打印出当前线程的线程名. 其执行时输出如下:
+```
+The main method was executed by thread: main
+The doSomething method was executed by thread: main
+Do something with Java Thread AnyWhere
+```

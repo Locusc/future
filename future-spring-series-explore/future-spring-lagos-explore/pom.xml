@@ -18,6 +18,7 @@
         <module>future-spring-ioc-transfer-lagos-explore</module>
         <module>future-spring-ioc-xml-lagos-explore</module>
         <module>future-spring-ioc-xml-anno-lagos-explore</module>
+        <module>future-spring-ioc-anno-lagos-explore</module>
     </modules>
 
 </project>

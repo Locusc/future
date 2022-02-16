@@ -1,4 +1,4 @@
-import cn.locusc.spring.ioc.xml.anno.logos.dao.AccountDao;
+import cn.locusc.spring.ioc.logos.dao.AccountDao;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

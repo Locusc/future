@@ -10,7 +10,7 @@
     <packaging>war</packaging>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>future-spring-ioc-xml-anno-lagos-explore</artifactId>
+    <artifactId>future-spring-ioc-anno-lagos-explore</artifactId>
     <description>lagos-transfer</description>
 
     <properties>
