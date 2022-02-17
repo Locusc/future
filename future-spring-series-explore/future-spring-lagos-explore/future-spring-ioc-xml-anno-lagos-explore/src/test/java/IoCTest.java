@@ -1,4 +1,5 @@
 import cn.locusc.spring.ioc.logos.dao.AccountDao;
+import cn.locusc.spring.ioc.logos.service.TransferService;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -35,6 +36,16 @@ public class IoCTest {
         System.out.println(lazyResult);
 
         applicationContext.close();
+    }
+
+    /**
+     * 测试xml.aop
+     */
+    @Test
+    public void testXmlAop() throws Exception {
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
+        TransferService transferService = applicationContext.getBean(TransferService.class);
+        transferService.transfer("6029621011000", "6029621011001", 100);
     }
 
 }

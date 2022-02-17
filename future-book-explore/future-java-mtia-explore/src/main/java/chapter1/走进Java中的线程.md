@@ -240,3 +240,47 @@ The main method was executed by thread: main
 The doSomething method was executed by thread: main
 Do something with Java Thread AnyWhere
 ```
+从上面的输出可以看出, 类JavaThreadAnywhere的main方法以及类Helper
+doSomething方法均由main线程负责执行. 这里, main线程的处理任务就是清单1-7
+中main方法所实现的处理逻辑, 包括打印当前线程的线程名称等
+
+Web应用中的servlet类的doGet、doPost等方法也总是由确定的线程负责执行的
+(具体与所使用的Web容器有关), 如清单1-8所示
+chapter1.codelist.EchoServlet.doGet
+如清单1-8所示的Servlet类在处理一个HTTP GET请求时, 其输出可能如下所示(以
+Tomcat作为Web容器):
+```
+// 书中输出
+This request was handled by thread:http-8080-2 
+// 自己输出
+This request was handled by thread:http-bio-8080-exec-1
+```
+
+这说明此时EchoServlet的doGet方法在名为"http-8080-2"的线程中执行, 因此我们
+也可以说, 此时上述名为"http-8080-2"的线程的处理任务就是执行EchoServlet的doGet
+方法所实现的HTTP请求处理逻辑
+在多线程编程中, 弄清楚一段代码具体是由哪个(或者哪种)线程去负责执行的这点
+很重要, 这关系到性能、线程安全等问题. 本书的后续章节会体现这点
+Java虚拟机垃圾回收器(Garbage Collector)负责对Java程序中不再使用的内存空间
+进行回收, 而这个回收的动作实际上也是通过专门的线程(垃圾回收线程)实现的, 这些
+线程由Java虚拟机自行创建. 从垃圾回收的角度看, Java平台中的线程可以分为垃圾回
+收线程和应用线程, 应用线程由Java应用程序开发者创建. 例如, 如清单1-2所示的程序
+所创建的线程就是应用线程
+为了提高Java代码的执行效率, Java虚拟机中的JIT(Just In Time)编译器会动态地将
+Java字节码(Byte Code)编译为Java虚拟机宿主机处理器可直接执行的机器码(本地代码)
+这个动态编译的过程实际上是由Java虚拟机创建的专门的线程负责执行的
+Java平台中的钱程随处可见, 这些线程各自都有其处理任务
+
+线程与线程之间总是存在一些联系 假设线程
+执行的代码创建了线程 ，那么，习惯上我们称线程 为线程 的子线程，相应地线程
+就被称为钱程 的父线程 例如，清单 1-2 中的线程 welcomeThread main 线程的子线
+程， main 线程是该线程的父线程 子线程所执行的代码还可以创建其他线程，因此一个
+子线程也可以是其他线程的父线程 所以，父线程 子线程是 个相对的称呼
+
+
+
+
+
+
+
+

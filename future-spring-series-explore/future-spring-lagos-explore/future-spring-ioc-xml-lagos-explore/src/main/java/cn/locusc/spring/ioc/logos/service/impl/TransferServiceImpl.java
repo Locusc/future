@@ -27,6 +27,7 @@ public class TransferServiceImpl implements TransferService {
             // ConnectionUtils.getInstance()
             //         .getCurrentThreadConnection().setAutoCommit(false);
             //TransactionManager.getInstance().beginTransaction();
+            System.out.println("执行转装业务逻辑");
             Account from = accountDao.queryAccountByCardNo(fromCardNo);
             Account to = accountDao.queryAccountByCardNo(toCardNo);
 
