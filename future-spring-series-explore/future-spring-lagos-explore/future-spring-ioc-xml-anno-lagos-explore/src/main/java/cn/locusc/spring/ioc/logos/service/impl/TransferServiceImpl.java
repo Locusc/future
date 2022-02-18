@@ -5,12 +5,14 @@ import cn.locusc.spring.ioc.logos.pojo.Account;
 import cn.locusc.spring.ioc.logos.service.TransferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Service;
 
 /**
  * @author 应癫
  */
 @Service("transferService")
+@EnableAspectJAutoProxy
 public class TransferServiceImpl implements TransferService {
 
     // @Autowired 按照类型注入
@@ -27,6 +29,7 @@ public class TransferServiceImpl implements TransferService {
             // ConnectionUtils.getInstance()
             //         .getCurrentThreadConnection().setAutoCommit(false);
             //TransactionManager.getInstance().beginTransaction();
+            System.out.println("transfer..." + money);
             Account from = accountDao.queryAccountByCardNo(fromCardNo);
             Account to = accountDao.queryAccountByCardNo(toCardNo);
 

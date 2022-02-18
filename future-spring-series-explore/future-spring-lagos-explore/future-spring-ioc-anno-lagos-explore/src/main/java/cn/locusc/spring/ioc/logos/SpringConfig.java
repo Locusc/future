@@ -6,7 +6,7 @@ import org.springframework.context.annotation.*;
 
 // @Configuration 注解表明当前类是一个配置类
 @Configuration
-@ComponentScan({"cn.locusc.spring.ioc.anno.logos"})
+@ComponentScan({"cn.locusc.spring.ioc.logos"})
 @PropertySource({"classpath:jdbc.properties"})
 // @Import()可以关联其他配置
 public class SpringConfig {

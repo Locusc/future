@@ -1,4 +1,4 @@
-package cn.locusc.spring.ioc.logos.utils;
+package cn.locusc.spring.aop.logos.utils;
 
 import java.util.List;
 
