@@ -14,7 +14,6 @@
     <description>lagos-spring教材</description>
 
     <modules>
-        <module>future-spring-ioc-custom-lagos-explore</module>
         <module>future-spring-ioc-transfer-lagos-explore</module>
         <module>future-spring-ioc-xml-lagos-explore</module>
         <module>future-spring-ioc-xml-anno-lagos-explore</module>
