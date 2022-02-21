@@ -16,5 +16,6 @@
     <modules>
         <module>future-spring-framework-explore</module>
         <module>future-spring-lagos-explore</module>
+        <module>future-spring-mvc-lagos-explore</module>
     </modules>
 </project>
