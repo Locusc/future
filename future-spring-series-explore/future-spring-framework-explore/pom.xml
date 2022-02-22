@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>future</artifactId>
+        <artifactId>future-spring-series-explore</artifactId>
         <groupId>cn.locusc</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
@@ -11,5 +11,9 @@
 
     <artifactId>future-spring-framework-explore</artifactId>
     <description>spring底层探索</description>
+    <packaging>pom</packaging>
 
+    <modules>
+        <module>future-spring-lagos-explore</module>
+    </modules>
 </project>
