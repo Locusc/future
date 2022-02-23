@@ -54,4 +54,32 @@
     <mvc:resources location="classpath:/" mapping="/resources/**" />
     <mvc:resources location="/WEB-INF/js/" mapping="/js/**" />
 
+
+    <mvc:interceptors>
+        <!--拦截所有handler-->
+        <!--<bean class="com.lagou.edu.interceptor.MyIntercepter01"/>-->
+
+        <mvc:interceptor>
+            <!--配置当前拦截器的url拦截规则，**代表当前目录下及其子目录下的所有url-->
+            <mvc:mapping path="/**"/>
+            <!--exclude-mapping可以在mapping(必须现有一个mapping)的基础上排除一些url拦截-->
+            <!--<mvc:exclude-mapping path="/demo/**"/>-->
+            <bean class="cn.locusc.spring.mvc.lagos.interceptor.MyInterceptor01"/>
+        </mvc:interceptor>
+
+
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="cn.locusc.spring.mvc.lagos.interceptor.MyInterceptor02"/>
+        </mvc:interceptor>
+
+    </mvc:interceptors>
+
+    <!--多元素解析器
+        id固定为multipartResolver
+    -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!--设置上传文件大小上限，单位是字节，-1代表没有限制也是默认的-->
+        <property name="maxUploadSize" value="5000000"/>
+    </bean>
 </beans>

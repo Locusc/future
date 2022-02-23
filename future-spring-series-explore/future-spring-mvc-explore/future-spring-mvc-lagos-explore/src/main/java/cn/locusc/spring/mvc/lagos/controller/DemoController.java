@@ -6,29 +6,53 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("/demo")
 public class DemoController {
 
-    //http://localhost:8080/demo/handle01
+    // SpringMVC的异常处理机制（异常处理器）
+    // 注意：写在这里只会对当前controller类生效
+   /* @ExceptionHandler(ArithmeticException.class)
+    public void handleException(ArithmeticException exception,HttpServletResponse response) {
+        // 异常处理逻辑
+        try {
+            response.getWriter().write(exception.getMessage());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }*/
+
+    /**
+     * url: http://localhost:8080/demo/handle01
+     */
     @RequestMapping("/handle01")
-    public ModelAndView handle01() {
-        Date date = new Date(); // 服务器时间
-        // 返回服务器时间到前端
+    public ModelAndView handle01(@ModelAttribute("name") String name) {
+
+        int c = 1/0;
+
+
+        Date date = new Date();// 服务器时间
+        // 返回服务器时间到前端页面
         // 封装了数据和页面信息的 ModelAndView
         ModelAndView modelAndView = new ModelAndView();
-        // addObject 其实是向请求域中request.setAttribute("date", date);
-        modelAndView.addObject("date", date);
+        // addObject 其实是向请求域中request.setAttribute("date",date);
+        modelAndView.addObject("date",date);
         // 视图信息(封装跳转的页面信息) 逻辑视图名
-        modelAndView.setViewName("/success");
+        modelAndView.setViewName("success");
         return modelAndView;
     }
 
@@ -161,70 +185,117 @@ public class DemoController {
         return modelAndView;
     }
 
-//    /*
-//     * restful  get   /demo/handle/15
-//     */
-//    @RequestMapping(value = "/handle/{id}",method = {RequestMethod.GET})
-//    public ModelAndView handleGet(@PathVariable("id") Integer id) {
-//
-//        Date date = new Date();
-//        ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.addObject("date",date);
-//        modelAndView.setViewName("success");
-//        return modelAndView;
-//    }
-//
-//    /*
-//     * restful  post  /demo/handle
-//     */
-//    @RequestMapping(value = "/handle",method = {RequestMethod.POST})
-//    public ModelAndView handlePost(String username) {
-//
-//        Date date = new Date();
-//        ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.addObject("date",date);
-//        modelAndView.setViewName("success");
-//        return modelAndView;
-//    }
-//
-//    /*
-//     * restful  put  /demo/handle/15/lisi
-//     */
-//    @RequestMapping(value = "/handle/{id}/{name}",method = {RequestMethod.PUT})
-//    public ModelAndView handlePut(@PathVariable("id") Integer id,@PathVariable("name") String username) {
-//
-//        Date date = new Date();
-//        ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.addObject("date",date);
-//        modelAndView.setViewName("success");
-//        return modelAndView;
-//    }
-//
-//
-//    /*
-//     * restful  delete  /demo/handle/15
-//     */
-//    @RequestMapping(value = "/handle/{id}",method = {RequestMethod.DELETE})
-//    public ModelAndView handleDelete(@PathVariable("id") Integer id) {
-//
-//        Date date = new Date();
-//        ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.addObject("date",date);
-//        modelAndView.setViewName("success");
-//        return modelAndView;
-//    }
-//
-//
-//
-//    @RequestMapping("/handle07")
-//    // 添加@ResponseBody之后，不再走视图解析器那个流程，而是等同于response直接输出数据
-//
-//    public @ResponseBody User handle07(@RequestBody User user) {
-//
-//        // 业务逻辑处理，修改name为张三丰
-//        user.setName("张三丰");
-//        return user;
-//    }
+    /*
+     * restful  get   /demo/handle/15
+     */
+    @RequestMapping(value = "/handle/{id}",method = {RequestMethod.GET})
+    public ModelAndView handleGet(@PathVariable("id") Integer id) {
+
+        Date date = new Date();
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("date",date);
+        modelAndView.setViewName("success");
+        return modelAndView;
+    }
+
+    /*
+     * restful  post  /demo/handle
+     */
+    @RequestMapping(value = "/handle",method = {RequestMethod.POST})
+    public ModelAndView handlePost(String username) {
+
+        Date date = new Date();
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("date",date);
+        modelAndView.setViewName("success");
+        return modelAndView;
+    }
+
+    /*
+     * restful  put  /demo/handle/15/lisi
+     */
+    @RequestMapping(value = "/handle/{id}/{name}",method = {RequestMethod.PUT})
+    public ModelAndView handlePut(@PathVariable("id") Integer id,@PathVariable("name") String username) {
+
+        Date date = new Date();
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("date",date);
+        modelAndView.setViewName("success");
+        return modelAndView;
+    }
+
+
+    /*
+     * restful  delete  /demo/handle/15
+     */
+    @RequestMapping(value = "/handle/{id}",method = {RequestMethod.DELETE})
+    public ModelAndView handleDelete(@PathVariable("id") Integer id) {
+
+        Date date = new Date();
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("date",date);
+        modelAndView.setViewName("success");
+        return modelAndView;
+    }
+
+
+
+    @RequestMapping("/handle07")
+    // 添加@ResponseBody之后，不再走视图解析器那个流程，而是等同于response直接输出数据
+
+    public @ResponseBody User handle07(@RequestBody User user) {
+
+        // 业务逻辑处理，修改name为张三丰
+        user.setName("张三丰");
+        return user;
+    }
+
+    /**
+     * 文件上传
+     * @return
+     */
+    @RequestMapping(value = "/upload")
+    public ModelAndView upload(MultipartFile uploadFile, HttpSession session) throws IOException {
+
+        // 处理上传文件
+        // 重命名，原名123.jpg ，获取后缀
+        String originalFilename = uploadFile.getOriginalFilename();// 原始名称
+        // 扩展名  jpg
+        String ext = originalFilename.substring(originalFilename.lastIndexOf(".") + 1, originalFilename.length());
+        String newName = UUID.randomUUID().toString() + "." + ext;
+
+        // 存储,要存储到指定的文件夹，/uploads/yyyy-MM-dd，考虑文件过多的情况按照日期，生成一个子文件夹
+        String realPath = session.getServletContext().getRealPath("/uploads");
+        String datePath = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        File folder = new File(realPath + "/" + datePath);
+
+        if(!folder.exists()) {
+            folder.mkdirs();
+        }
+
+
+        // 存储文件到目录
+        uploadFile.transferTo(new File(folder,newName));
+
+
+        // TODO 文件磁盘路径要更新到数据库字段
+
+        Date date = new Date();
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("date",date);
+        modelAndView.setViewName("success");
+        return modelAndView;
+    }
+
+    @RequestMapping("/handleRedirect")
+    public String handleRedirect(String name, RedirectAttributes redirectAttributes) {
+
+        //return "redirect:handle01?name=" + name;  // 拼接参数安全性、参数长度都有局限
+        // addFlashAttribute方法设置了一个flash类型属性，该属性会被暂存到session中，在跳转到页面之后该属性销毁
+        redirectAttributes.addFlashAttribute("name",name);
+        return "redirect:handle01";
+
+    }
 
     //implements org.springframework.web.servlet.mvc.Controller
 //    @Override

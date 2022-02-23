@@ -14,5 +14,6 @@
 
     <modules>
         <module>future-spring-mvc-lagos-explore</module>
+        <module>future-spring-mvc-custom-lagos-explore</module>
     </modules>
 </project>
