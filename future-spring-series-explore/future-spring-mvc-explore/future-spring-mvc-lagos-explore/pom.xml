@@ -11,6 +11,7 @@
 
     <artifactId>future-spring-mvc-lagos-explore</artifactId>
     <packaging>war</packaging>
+    <description>spring-mvc-lagos教材</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

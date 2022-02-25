@@ -1,6 +1,5 @@
 package cn.locusc.spring.mvc.cus.framework.pojo;
 
-import javax.sound.midi.MetaEventListener;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,13 +11,16 @@ import java.util.regex.Pattern;
  */
 public class Handler {
 
-    private Object controller; // method.invoke(obj,)
+    // method.invoke(obj,)
+    private Object controller;
 
     private Method method;
 
-    private Pattern pattern; // spring中url是支持正则的
+    // spring中url是支持正则的
+    private Pattern pattern;
 
-    private Map<String,Integer> paramIndexMapping; // 参数顺序,是为了进行参数绑定，key是参数名，value代表是第几个参数 <name,2>
+    // 参数顺序, 是为了进行参数绑定, key是参数名, value代表是第几个参数 <name,2>
+    private Map<String,Integer> paramIndexMapping;
 
 
     public Handler(Object controller, Method method, Pattern pattern) {

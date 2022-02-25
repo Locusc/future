@@ -12,17 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 @CusRequestMapping("/demo")
 public class DemoController {
 
-
     @CusAutowired
     private IDemoService demoService;
 
-
     /**
      * URL: /demo/query?name=lisi
-     * @param request
-     * @param response
-     * @param name
-     * @return
      */
     @CusRequestMapping("/query")
     public String query(HttpServletRequest request, HttpServletResponse response, String name) {

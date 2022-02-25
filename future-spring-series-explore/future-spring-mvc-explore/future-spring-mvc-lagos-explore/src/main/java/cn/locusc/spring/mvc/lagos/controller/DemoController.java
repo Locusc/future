@@ -24,9 +24,9 @@ import java.util.UUID;
 @RequestMapping("/demo")
 public class DemoController {
 
-    // SpringMVC的异常处理机制（异常处理器）
-    // 注意：写在这里只会对当前controller类生效
-   /* @ExceptionHandler(ArithmeticException.class)
+    // SpringMVC的异常处理机制(异常处理器)
+    // 注意: 写在这里只会对当前controller类生效
+    /* @ExceptionHandler(ArithmeticException.class)
     public void handleException(ArithmeticException exception,HttpServletResponse response) {
         // 异常处理逻辑
         try {
@@ -44,7 +44,6 @@ public class DemoController {
 
         int c = 1/0;
 
-
         Date date = new Date();// 服务器时间
         // 返回服务器时间到前端页面
         // 封装了数据和页面信息的 ModelAndView
@@ -57,20 +56,16 @@ public class DemoController {
     }
 
     /**
-     * SpringMVC在handler方法上传入Map、Model和ModelMap参数，并向这些参数中保存数据（放入到请求域），都可以在页面获取到
+     * SpringMVC在handler方法上传入Map、Model和ModelMap参数, 并向这些参数中保存数据(放入到请求域), 都可以在页面获取到
      *
      * 它们之间是什么关系？
-     * 运行时的具体类型都是BindingAwareModelMap，相当于给BindingAwareModelMap中保存的数据都会放在请求域中
+     * 运行时的具体类型都是BindingAwareModelMap, 相当于给BindingAwareModelMap中保存的数据都会放在请求域中
      *
-     *  Map(jdk中的接口)        Model（spring的接口）
+     * Map(jdk中的接口)  Model（spring的接口）
      *
-     *  ModelMap(class,实现Map接口)
+     * ModelMap(class,实现Map接口)
      *
-     *
-     *
-     *
-     *              BindingAwareModelMap继承了ExtendedModelMap，ExtendedModelMap继承了ModelMap,实现了Model接口
-     *
+     * BindingAwareModelMap继承了ExtendedModelMap，ExtendedModelMap继承了ModelMap,实现了Model接口
      */
 
     //http://localhost:8080/demo/handle11
@@ -78,8 +73,8 @@ public class DemoController {
     @RequestMapping("/handle11")
     public String handle11(ModelMap modelMap) {
         modelMap.addAttribute("date", new Date());
-        //=================modelmap:class org.springframework.validation.support.BindingAwareModelMap
-        System.out.println("=================modelmap:" + modelMap.getClass());
+        //=================modelMap:class org.springframework.validation.support.BindingAwareModelMap
+        System.out.println("=================modelMap:" + modelMap.getClass());
         return "success";
     }
 
@@ -95,7 +90,6 @@ public class DemoController {
 
     //http://localhost:8080/demo/handle13
     //直接申明形参Map集合, 封装数据
-
     @RequestMapping("/handle13")
     public String handle13(Map<String, Object> map) {
         map.put("date", new Date());
@@ -108,13 +102,12 @@ public class DemoController {
      *
      * SpringMVC 对原生servlet api的支持  url：/demo/handle02?id=1
      *
-     * 如果要在SpringMVC中使用servlet原生对象，比如HttpServletRequest\HttpServletResponse\HttpSession，直接在Handler方法形参中声明使用即可
-     *
+     * 如果要在SpringMVC中使用servlet原生对象
+     * 比如HttpServletRequest\HttpServletResponse\HttpSession, 直接在Handler方法形参中声明使用即可
      */
     @RequestMapping("/handle02")
     public ModelAndView handle02(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
         String id = request.getParameter("id");
-
         Date date = new Date();
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("date",date);
@@ -123,10 +116,10 @@ public class DemoController {
     }
 
     /*
-     * SpringMVC 接收简单数据类型参数  url：/demo/handle03?id=1
+     * SpringMVC 接收简单数据类型参数  url: /demo/handle03?id=1
      *
-     * 注意：接收简单数据类型参数，直接在handler方法的形参中声明即可，框架会取出参数值然后绑定到对应参数上
-     * 要求：传递的参数名和声明的形参名称保持一致
+     * 注意: 接收简单数据类型参数, 直接在handler方法的形参中声明即可, 框架会取出参数值然后绑定到对应参数上
+     * 要求: 传递的参数名和声明的形参名称保持一致
      */
     @RequestMapping("/handle03")
     public ModelAndView handle03(@RequestParam("ids") Integer id, Boolean flag) {
@@ -139,9 +132,9 @@ public class DemoController {
     }
 
     /*
-     * SpringMVC接收pojo类型参数  url：/demo/handle04?id=1&username=zhangsan
+     * SpringMVC接收pojo类型参数  url: /demo/handle04?id=1&username=zhangsan
      *
-     * 接收pojo类型参数，直接形参声明即可，类型就是Pojo的类型，形参名无所谓
+     * 接收pojo类型参数, 直接形参声明即可, 类型就是Pojo的类型, 形参名无所谓
      * 但是要求传递的参数名必须和Pojo的属性名保持一致
      */
     @RequestMapping("/handle04")
@@ -155,8 +148,8 @@ public class DemoController {
     }
 
     /*
-     * SpringMVC接收pojo包装类型参数  url：/demo/handle05?user.id=1&user.username=zhangsan
-     * 不管包装Pojo与否，它首先是一个pojo，那么就可以按照上述pojo的要求来
+     * SpringMVC接收pojo包装类型参数  url: /demo/handle05?user.id=1&user.username=zhangsan
+     * 不管包装Pojo与否, 它首先是一个pojo, 那么就可以按照上述pojo的要求来
      * 1、绑定时候直接形参声明即可
      * 2、传参参数名和pojo属性保持一致，如果不能够定位数据项，那么通过属性名 + "." 的方式进一步锁定数据
      *
@@ -273,10 +266,8 @@ public class DemoController {
             folder.mkdirs();
         }
 
-
         // 存储文件到目录
         uploadFile.transferTo(new File(folder,newName));
-
 
         // TODO 文件磁盘路径要更新到数据库字段
 
@@ -290,7 +281,7 @@ public class DemoController {
     @RequestMapping("/handleRedirect")
     public String handleRedirect(String name, RedirectAttributes redirectAttributes) {
 
-        //return "redirect:handle01?name=" + name;  // 拼接参数安全性、参数长度都有局限
+        // return "redirect:handle01?name=" + name;  // 拼接参数安全性、参数长度都有局限
         // addFlashAttribute方法设置了一个flash类型属性，该属性会被暂存到session中，在跳转到页面之后该属性销毁
         redirectAttributes.addFlashAttribute("name",name);
         return "redirect:handle01";

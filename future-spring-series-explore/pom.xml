@@ -19,5 +19,6 @@
         <module>future-spring-mvc-explore</module>
         <module>future-spring-data-explore</module>
         <module>future-spring-webflux-explore</module>
+        <module>future-spring-comprehensive-explore</module>
     </modules>
 </project>

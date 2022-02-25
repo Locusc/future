@@ -91,7 +91,7 @@ public class JdbcAccountDaoImpl implements AccountDao {
 
         // 从连接池获取连接
         // 改造为从当前线程获取绑定的connection连接
-        //Connection con = ConnectionUtils.getInstance().getCurrentThreadConnection();
+        // Connection con = ConnectionUtils.getInstance().getCurrentThreadConnection();
         // Connection con = DruidUtils.getInstance().getConnection();
         Connection con = connectionUtils.getCurrentThreadConnection();
         String sql = "update account set money=? where cardNo=?";

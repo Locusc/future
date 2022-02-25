@@ -18,14 +18,12 @@ public class DateConverter implements Converter<String, Date> {
     public Date convert(String source) {
         // 完成字符串向日期的转换
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-
         try {
             Date parse = simpleDateFormat.parse(source);
             return parse;
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
         return null;
     }
 

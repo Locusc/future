@@ -9,7 +9,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>future-spring-data-explore</artifactId>
-    <description>spring-data-系列</description>
+    <artifactId>future-spring-comprehensive-explore</artifactId>
+    <packaging>pom</packaging>
+    <description>spring综合</description>
+
+    <modules>
+        <module>future-spring-ssm-lagos-explore</module>
+    </modules>
 
 </project>

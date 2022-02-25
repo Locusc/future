@@ -11,7 +11,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>future-spring-ioc-anno-lagos-explore</artifactId>
-    <description>lagos-transfer</description>
+    <description>ioc-anno-形式</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -94,9 +94,9 @@
 <!--        </dependency>-->
 </dependencies>
 
-<build>
- <plugins>
-     <!-- 配置Maven的JDK编译级别 -->
+    <build>
+        <plugins>
+            <!-- 配置Maven的JDK编译级别 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>

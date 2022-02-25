@@ -11,6 +11,7 @@
 
     <artifactId>future-spring-mvc-custom-lagos-explore</artifactId>
     <packaging>war</packaging>
+    <description>自定义mvc框架</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -25,7 +26,6 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
-
 
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -44,10 +44,7 @@
 
 
     <build>
-
-
         <plugins>
-
             <!--编译插件定义编译细节-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -63,7 +60,6 @@
                     </compilerArgs>
                 </configuration>
             </plugin>
-
 
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>

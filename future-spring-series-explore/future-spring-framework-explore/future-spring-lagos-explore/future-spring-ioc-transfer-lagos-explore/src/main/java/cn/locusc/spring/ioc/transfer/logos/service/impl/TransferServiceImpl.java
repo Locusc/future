@@ -30,7 +30,7 @@ public class TransferServiceImpl implements TransferService {
             // 开启事务(关闭事务的自动提交)
             // ConnectionUtils.getInstance()
             //         .getCurrentThreadConnection().setAutoCommit(false);
-            //TransactionManager.getInstance().beginTransaction();
+            // TransactionManager.getInstance().beginTransaction();
             Account from = accountDao.queryAccountByCardNo(fromCardNo);
             Account to = accountDao.queryAccountByCardNo(toCardNo);
 
@@ -44,12 +44,12 @@ public class TransferServiceImpl implements TransferService {
             // 提交事务
             // ConnectionUtils.getInstance()
             //         .getCurrentThreadConnection().commit();
-            //TransactionManager.getInstance().commit();
+            // TransactionManager.getInstance().commit();
         } catch (Exception e) {
             // 回滚事务
             // ConnectionUtils.getInstance()
             //         .getCurrentThreadConnection().rollback();
-            //TransactionManager.getInstance().rollback();
+            // TransactionManager.getInstance().rollback();
             throw e;
         }
     }
