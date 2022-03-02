@@ -1,4 +1,6 @@
 
+import cn.locusc.spring.data.jpa.lagos.dao.ResumeDao;
+import cn.locusc.spring.data.jpa.lagos.pojo.Resume;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,14 +22,11 @@ public class ResumeDaoTest {
     @Autowired
     private ResumeDao resumeDao;
 
-
     /**
      * dao层接口调用，分成两块：
      * 1、基础的增删改查
      * 2、专门针对查询的详细分析使用
      */
-
-
     @Test
     public void testFindById(){
         // 早期的版本 dao.findOne(id);
@@ -43,7 +42,6 @@ public class ResumeDaoTest {
         System.out.println(resume);
     }
 
-
     @Test
     public void testFindOne(){
         Resume resume = new Resume();
@@ -54,7 +52,6 @@ public class ResumeDaoTest {
         Resume resume1 = one.get();
         System.out.println(resume1);
     }
-
 
     @Test
     public void testSave(){
@@ -69,12 +66,10 @@ public class ResumeDaoTest {
 
     }
 
-
     @Test
     public void testDelete(){
         resumeDao.deleteById(5l);
     }
-
 
     @Test
     public void testFindAll(){
@@ -85,8 +80,6 @@ public class ResumeDaoTest {
         }
     }
 
-
-
     @Test
     public void testSort(){
         Sort sort = new Sort(Sort.Direction.DESC,"id");
@@ -96,7 +89,6 @@ public class ResumeDaoTest {
             System.out.println(resume);
         }
     }
-
 
     @Test
     public void testPage(){
@@ -145,9 +137,6 @@ public class ResumeDaoTest {
      *
      *
      */
-
-
-
     @Test
     public void testJpql(){
         List<Resume> list = resumeDao.findByJpql(1l, "张三");
@@ -167,7 +156,6 @@ public class ResumeDaoTest {
         }
     }
 
-
     @Test
     public void testMethodName(){
         List<Resume> list = resumeDao.findByNameLikeAndAddress("李%","上海");
@@ -177,9 +165,6 @@ public class ResumeDaoTest {
         }
 
     }
-
-
-
 
     // 动态查询，查询单个对象
     @Test
@@ -217,10 +202,6 @@ public class ResumeDaoTest {
 
     }
 
-
-
-
-
     @Test
     public void testSpecficationMultiCon(){
 
@@ -247,16 +228,9 @@ public class ResumeDaoTest {
             }
         };
 
-
         Optional<Resume> optional = resumeDao.findOne(specification);
         Resume resume = optional.get();
         System.out.println(resume);
     }
-
-
-
-
-
-
 
 }

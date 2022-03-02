@@ -60,7 +60,7 @@
                             因为我们会建立pojo和数据表之间的映射关系
                             程序启动时，如果数据表还没有创建，是否要程序给创建一下
                         -->
-                        <property name="generateDdl" value="false"/>
+                        <property name="generateDdl" value="true"/>
 
 
                         <!--
