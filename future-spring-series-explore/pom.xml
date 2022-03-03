@@ -20,5 +20,6 @@
         <module>future-spring-data-explore</module>
         <module>future-spring-webflux-explore</module>
         <module>future-spring-comprehensive-explore</module>
+        <module>future-spring-boot-explore</module>
     </modules>
 </project>
