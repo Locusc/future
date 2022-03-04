@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>future-spring-boot-lagos-explore</artifactId>
+    <description>spring-boot-lagos教材</description>
 
     <dependencies>
 
