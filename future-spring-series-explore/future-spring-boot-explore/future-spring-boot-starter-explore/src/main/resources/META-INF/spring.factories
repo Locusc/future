@@ -1,0 +1,3 @@
+
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  cn.locusc.spring.boot.starter.config.MyAutoConfiguration

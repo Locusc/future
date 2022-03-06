@@ -10,9 +10,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>future-spring-boot-explore</artifactId>
+    <packaging>pom</packaging>
 
     <modules>
         <module>future-spring-boot-lagos-explore</module>
+        <module>future-spring-boot-starter-explore</module>
     </modules>
 
 </project>

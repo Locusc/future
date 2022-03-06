@@ -15,6 +15,7 @@
 
     <modules>
         <module>future-spring-ssm-lagos-explore</module>
+        <module>future-spring-boot-rjmt-lagos-explore</module>
     </modules>
 
 </project>

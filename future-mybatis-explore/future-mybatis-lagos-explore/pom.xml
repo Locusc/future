@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>future-mybatis-lagou-explore</artifactId>
+    <artifactId>future-mybatis-lagos-explore</artifactId>
     <packaging>pom</packaging>
     <description>lagos教材</description>
 
