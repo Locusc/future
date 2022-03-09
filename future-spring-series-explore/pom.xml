@@ -21,5 +21,6 @@
         <module>future-spring-webflux-explore</module>
         <module>future-spring-comprehensive-explore</module>
         <module>future-spring-boot-explore</module>
+        <module>future-spring-security-explore</module>
     </modules>
 </project>
