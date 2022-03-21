@@ -13,11 +13,12 @@
         el.innerHTML = message;
         document.getElementById("events").appendChild(el);
     }
-    var eventSource = new EventSource("/temperature-stream");
+    var eventSource = new EventSource("/loan-process-stream");
     eventSource.onmessage = e => {
         const t = JSON.parse(e.data);
-        const fixed = Number(t.value).toFixed(2);
-        add('Temperature: ' + fixed + ' C');
+        // const fixed = Number(t.value).toFixed(2);
+        // add('Temperature: ' + fixed + ' C');
+        add(t.value);
     }
     eventSource.onopen = e => add('Connection opened');
     eventSource.onerror = e => add('Connection closed');

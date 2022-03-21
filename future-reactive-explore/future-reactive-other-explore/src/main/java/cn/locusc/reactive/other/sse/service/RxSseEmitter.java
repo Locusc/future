@@ -1,6 +1,5 @@
 package cn.locusc.reactive.other.sse.service;
 
-import cn.locusc.reactive.other.sse.entity.Temperature;
 import org.json.JSONObject;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 import rx.Subscriber;
@@ -12,15 +11,15 @@ import java.io.IOException;
  * 使用RxJava实现SSE(server-send-event)
  * 2022/3/16
  */
-public class RxSseEmitter extends SseEmitter {
+public class RxSseEmitter<T> extends SseEmitter {
 
     static final long SSE_SESSION_TIMEOUT = 30 * 60 * 1000;
 
-    private final Subscriber<Temperature> subscriber;
+    private final Subscriber<T> subscriber;
 
     public RxSseEmitter() {
         super(SSE_SESSION_TIMEOUT);
-        subscriber = new Subscriber<Temperature>() {
+        subscriber = new Subscriber<T>() {
 
             @Override
             public void onCompleted() {
@@ -33,9 +32,9 @@ public class RxSseEmitter extends SseEmitter {
             }
 
             @Override
-            public void onNext(Temperature temperature) {
+            public void onNext(T t) {
                 try {
-                    JSONObject jsonObject = new JSONObject(temperature);
+                    JSONObject jsonObject = new JSONObject(t);
                     String s = jsonObject.toString();
                     System.out.println(s);
                     RxSseEmitter.this.send(s);
@@ -46,7 +45,7 @@ public class RxSseEmitter extends SseEmitter {
         };
     }
 
-    public Subscriber<Temperature> getSubscriber() {
+    public Subscriber<T> getSubscriber() {
         return this.subscriber;
     }
 }

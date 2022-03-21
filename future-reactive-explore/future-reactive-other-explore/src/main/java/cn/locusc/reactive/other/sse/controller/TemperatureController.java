@@ -1,6 +1,8 @@
 package cn.locusc.reactive.other.sse.controller;
 
+import cn.locusc.reactive.other.sse.entity.LoanProcesses;
 import cn.locusc.reactive.other.sse.entity.Temperature;
+import cn.locusc.reactive.other.sse.service.LoanProcessesComponent;
 import cn.locusc.reactive.other.sse.service.RxSseEmitter;
 import cn.locusc.reactive.other.sse.service.TemperatureSensor;
 import org.json.JSONObject;
@@ -81,6 +83,23 @@ public class TemperatureController {
         RxSseEmitter emitter = new RxSseEmitter();
         // 完成订阅
         temperatureSensor.temperatureStream().subscribe(emitter.getSubscriber());
+        return emitter;
+    }
+
+    @Resource
+    private LoanProcessesComponent loanProcessesComponent;
+
+    /**
+     * 建立消息连接
+     * @return org.springframework.web.servlet.mvc.method.annotation.SseEmitter
+     */
+    @RequestMapping(value = "/loan-process-stream", method = RequestMethod.GET)
+    public SseEmitter loanProcessStream(HttpServletRequest request) {
+        // 用作控制器方法的返回值
+        // 该返回值中封装了Subscriber, 该Subscriber订阅了订单流程响应式流
+        RxSseEmitter<LoanProcesses> emitter = new RxSseEmitter<>();
+        // 完成订阅
+        loanProcessesComponent.loanProcessesObservable().subscribe(emitter.getSubscriber());
         return emitter;
     }
 
