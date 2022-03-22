@@ -13,11 +13,14 @@ import java.io.IOException;
  */
 public class RxSseEmitter<T> extends SseEmitter {
 
+    // 超时时间
     static final long SSE_SESSION_TIMEOUT = 30 * 60 * 1000;
 
+    // 订阅者
     private final Subscriber<T> subscriber;
 
     public RxSseEmitter() {
+        // 设置超时时间
         super(SSE_SESSION_TIMEOUT);
         subscriber = new Subscriber<T>() {
 
@@ -28,7 +31,7 @@ public class RxSseEmitter<T> extends SseEmitter {
 
             @Override
             public void onError(Throwable e) {
-                System.err.println("发生异常：" + e.getMessage());
+                System.err.println("发生异常:" + e.getMessage());
             }
 
             @Override
@@ -39,6 +42,7 @@ public class RxSseEmitter<T> extends SseEmitter {
                     System.out.println(s);
                     RxSseEmitter.this.send(s);
                 } catch (IOException e) {
+                    // 发生错误取消订阅
                     this.unsubscribe();
                 }
             }
