@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<web-app>
+    <servlet>
+        <servlet-name>locusc</servlet-name>
+        <servlet-class>cn.locusc.minicat.server.MiniCatServlet</servlet-class>
+    </servlet>
+
+
+    <servlet-mapping>
+        <servlet-name>locusc</servlet-name>
+        <url-pattern>/locusc</url-pattern>
+    </servlet-mapping>
+</web-app>
