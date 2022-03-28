@@ -26,5 +26,6 @@
         <module>future-spring-series-explore</module>
         <module>future-reactive-explore</module>
         <module>future-tomcat-explore</module>
+        <module>future-distributed-explore</module>
     </modules>
 </project>
