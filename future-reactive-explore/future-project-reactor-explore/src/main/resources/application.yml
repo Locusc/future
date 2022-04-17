@@ -1,0 +1,13 @@
+server:
+  port: 9080
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: wdnmd123
+    url: jdbc:mysql://39.107.96.199:3306/mercy?useSSL=false
+
+logging:
+  level:
+    org.springframework.jdbc.datasource: debug
