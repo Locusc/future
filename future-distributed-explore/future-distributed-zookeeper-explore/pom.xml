@@ -9,15 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>future-distributed-job-explore</artifactId>
-    <packaging>pom</packaging>
-    <description>分布式调度</description>
-
-    <modules>
-        <module>future-elastic-job-explore</module>
-        <module>future-xxl-job-explore</module>
-        <module>future-quartz-explore</module>
-    </modules>
+    <artifactId>future-distributed-zookeeper-explore</artifactId>
+    <description>zookeeper深入</description>
 
 
 </project>

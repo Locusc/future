@@ -3,21 +3,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>future-distributed-explore</artifactId>
+        <artifactId>future</artifactId>
         <groupId>cn.locusc</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>future-distributed-job-explore</artifactId>
-    <packaging>pom</packaging>
-    <description>分布式调度</description>
-
-    <modules>
-        <module>future-elastic-job-explore</module>
-        <module>future-xxl-job-explore</module>
-        <module>future-quartz-explore</module>
-    </modules>
+    <artifactId>future-microservices-explore</artifactId>
+    <description>微服务探索</description>
 
 
 </project>

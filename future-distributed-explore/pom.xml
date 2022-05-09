@@ -16,6 +16,8 @@
         <module>future-distributed-job-explore</module>
         <module>future-distributed-pk-explore</module>
         <module>future-distributed-hash-explore</module>
+        <module>future-distributed-rpc-explore</module>
+        <module>future-distributed-zookeeper-explore</module>
     </modules>
 
 </project>
