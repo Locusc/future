@@ -18,6 +18,7 @@
         <module>future-distributed-hash-explore</module>
         <module>future-distributed-rpc-explore</module>
         <module>future-distributed-zookeeper-explore</module>
+        <module>future-distributed-dubbo-explore</module>
     </modules>
 
 </project>
