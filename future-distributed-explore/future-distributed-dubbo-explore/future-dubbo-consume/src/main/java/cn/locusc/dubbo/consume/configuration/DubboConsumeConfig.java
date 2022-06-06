@@ -7,6 +7,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 @EnableDubbo
-@ComponentScan(basePackages = "com.lagou.bean")
-@PropertySource("classpath:dubbo-consumer.properties")
+@ComponentScan(basePackages = "cn.locusc.dubbo.consume.components")
+@PropertySource("classpath:dubbo-consume.properties")
 public class DubboConsumeConfig { }
