@@ -21,6 +21,7 @@
     <modules>
         <module>future-jdk-explore</module>
         <module>future-java-design-pattern</module>
+        <module>future-java-spi-explore</module>
     </modules>
 
 </project>
