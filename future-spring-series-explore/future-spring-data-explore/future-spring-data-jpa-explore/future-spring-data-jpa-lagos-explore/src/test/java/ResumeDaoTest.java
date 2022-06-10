@@ -82,7 +82,7 @@ public class ResumeDaoTest {
 
     @Test
     public void testSort(){
-        Sort sort = new Sort(Sort.Direction.DESC,"id");
+        Sort sort = Sort.by(Sort.Direction.DESC, "id");
         List<Resume> list = resumeDao.findAll(sort);
         for (int i = 0; i < list.size(); i++) {
             Resume resume =  list.get(i);
