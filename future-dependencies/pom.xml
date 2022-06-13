@@ -136,6 +136,14 @@
                         <groupId>org.apache.dubbo</groupId>
                         <artifactId>dubbo-common</artifactId>
                     </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.curator</groupId>
+                        <artifactId>curator-framework</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.curator</groupId>
+                        <artifactId>curator-recipes</artifactId>
+                    </exclusion>
                 </exclusions>
             </dependency>
             <dependency>
@@ -299,6 +307,12 @@
                 <artifactId>spotbugs-annotations</artifactId>
                 <version>4.2.3</version>
                 <scope>compile</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-recipes</artifactId>
+                <version>4.0.1</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
