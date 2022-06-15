@@ -1,0 +1,2 @@
+one=cn.locusc.dubbo.producer.service.impl.DubboSpiOneServiceImpl
+two=cn.locusc.dubbo.producer.service.impl.DubboSpiTwoServiceImpl

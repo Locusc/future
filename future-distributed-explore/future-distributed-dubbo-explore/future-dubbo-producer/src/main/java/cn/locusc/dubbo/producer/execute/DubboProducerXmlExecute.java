@@ -6,7 +6,7 @@ public class DubboProducerXmlExecute {
 
     public static void main(String[] args) throws  Exception{
         ClassPathXmlApplicationContext applicationContext
-                = new ClassPathXmlApplicationContext("classpath:dubbo-provider.xml");
+                = new ClassPathXmlApplicationContext("classpath:dubbo-producer.xml");
         applicationContext.start();
         System.in.read();
     }

@@ -4,4 +4,6 @@ public interface DubboDemoService {
 
     String notifyMessage(String message);
 
+    String loadBalance(String message);
+
 }

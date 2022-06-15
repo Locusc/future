@@ -19,7 +19,8 @@ public class DubboConsumeExecute {
         DubboConsumeComponent dubboConsumeComponent = applicationContext.getBean(DubboConsumeComponent.class);
         while(true){
             System.in.read();
-            String message = dubboConsumeComponent.notifyMessage("dubbo demo test");
+//             String message = dubboConsumeComponent.notifyMessage("dubbo demo test");
+            String message = dubboConsumeComponent.loanBalance("dubbo demo test");
             System.out.println(String.format("result: %s", message));
         }
     }
