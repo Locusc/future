@@ -1,0 +1,38 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: future-microservice-resume
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://39.107.96.199:3306/mercy?characterEncoding=utf8
+    username: root
+    password: wdnmd123
+  jpa:
+    database: MySQL
+    show-sql: true
+    hibernate:
+      naming:
+        # 避免将驼峰命名转换为下划线命名
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+eureka:
+  client:
+    service-url:
+      # 注册到集群，就把多个Eureka server地址使用逗号连接起来即可；注册到单实例（非集群模式），那就写一个就ok
+      defaultZone: http://FutureCloudEurekaServerA:8761/eureka,http://FutureCloudEurekaServerB:8762/eureka
+    instance:
+      prefer-ip-address: true  #服务实例中显示ip，而不是显示主机名（兼容老的eureka版本）
+      # 实例名称： 192.168.1.103:lagou-cn.locusc.microserivce.resume.service-resume:8080，我们可以自定义它
+      instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}:@project.version@
+      # 自定义Eureka元数据
+      metadata-map:
+        cluster: cl1
+        region: rn1
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
