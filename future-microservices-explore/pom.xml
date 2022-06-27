@@ -26,6 +26,8 @@
         <module>future-microservice-resume-8081</module>
         <module>future-cloud-hystrix-dashboard-9000</module>
         <module>future-cloud-hystrix-turbine-9001</module>
+        <module>future-cloud-config-server-9003</module>
+        <module>future-cloud-gateway-server-9002</module>
     </modules>
 
     <dependencies>
