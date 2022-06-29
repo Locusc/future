@@ -15,6 +15,27 @@ spring:
       naming:
         # 避免将驼峰命名转换为下划线命名
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  cloud:
+    # config客户端配置,和ConfigServer通信，并告知ConfigServer希望获取的配置信息在哪个文件中
+    config:
+      name: future-service-resume  #配置文件名称
+      profile: dev  #后缀名称
+      label: master #分支名称
+      uri: http://localhost:9003    #ConfigServer配置中心地址
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+
+  zipkin:
+    base-url: http://127.0.0.1:9411/ # zipkin server的请求地址
+    sender:
+      type: web # 请求方式,默认以http的方式向zipkin server发送追踪数据
+  sleuth:
+    sampler:
+      #采样的百分比，默认为0.1，即10%，这里配置1，是记录全部 的sleuth信息，是为了收集到更多的数据（仅供测试用）。在分布式系统中，过于频繁的采样会影响系 统性能，所以这里配置需要采用一个合适的值。
+      probability: 1.0
 
 eureka:
   client:
@@ -35,3 +56,10 @@ management:
     web:
       exposure:
         include: "*"
+
+#分布式链路追踪--调整SpringBoot日志输出级别
+logging:
+  level:
+    root: info
+    org.springframework.web.servlet.DispatcherServlet: debug
+    org.springframework.cloud.sleuth: debug

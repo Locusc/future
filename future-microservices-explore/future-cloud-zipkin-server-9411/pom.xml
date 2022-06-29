@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>future-cloud-gateway-server-9002</artifactId>
+    <artifactId>future-cloud-zipkin-server-9411</artifactId>
 
 
 </project>
