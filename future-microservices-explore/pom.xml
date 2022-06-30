@@ -32,6 +32,7 @@
         <module>future-cloud-stream-consumer-9091</module>
         <module>future-cloud-stream-producer-9090</module>
         <module>future-cloud-zipkin-server-9411</module>
+        <module>future-microservice-oauth-9999</module>
     </modules>
 
     <dependencies>
