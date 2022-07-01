@@ -68,7 +68,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.lagou.webflux.demo.Webflux614Application</mainClass>
+                    <mainClass>cn.locusc.reactive.other.sse.SseAsyncHttpApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>

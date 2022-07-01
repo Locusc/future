@@ -33,7 +33,7 @@
     -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <!--别名映射扫描-->
-        <property name="typeAliasesPackage" value="com.lagou.edu.pojo"/>
+        <property name="typeAliasesPackage" value="cn.locusc.spring.ssm.lagos.pojo"/>
         <!--数据源dataSource-->
         <property name="dataSource" ref="dataSource"/>
     </bean>

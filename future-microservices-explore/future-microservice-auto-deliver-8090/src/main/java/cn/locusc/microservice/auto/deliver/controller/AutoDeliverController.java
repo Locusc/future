@@ -87,7 +87,7 @@ public class AutoDeliverController {
     @GetMapping("/checkStateTimeout/{userId}")
     public Integer findResumeOpenStateTimeout(@PathVariable Long userId) {
         // 使用ribbon不需要我们自己获取服务实例然后选择一个那么去访问了（自己的负载均衡）
-        String url = "http://lagou-service-resume/resume/openstate/" + userId;  // 指定服务名
+        String url = "http://future-microservice-resume/openstate/" + userId;  // 指定服务名
         return restTemplate.getForObject(url, Integer.class);
     }
 
@@ -119,7 +119,7 @@ public class AutoDeliverController {
     )
     public Integer findResumeOpenStateTimeoutFallback(@PathVariable Long userId) {
         // 使用ribbon不需要我们自己获取服务实例然后选择一个那么去访问了（自己的负载均衡）
-        String url = "http://lagou-service-resume/resume/openstate/" + userId;  // 指定服务名
+        String url = "http://future-microservice-resume/resume/openstate/" + userId;  // 指定服务名
         return restTemplate.getForObject(url, Integer.class);
     }
 

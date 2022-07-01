@@ -1,7 +1,7 @@
 package cn.locusc.spring.boot.rjmt.cache.controller;
 
-import com.lagou.pojo.Comment;
-import com.lagou.service.CommentService;
+import cn.locusc.spring.boot.rjmt.cache.service.CommentService;
+import cn.locusc.spring.boot.rjmt.cache.pojo.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,9 +32,5 @@ public class CommentController {
     public void deleteComment(Integer id){
         commentService.deleteComment(id);
     }
-
-
-
-
 
 }

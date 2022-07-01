@@ -47,7 +47,7 @@ eureka:
       defaultZone: http://FutureCloudEurekaServerA:8761/eureka,http://FutureCloudEurekaServerB:8762/eureka
     instance:
       prefer-ip-address: true  #服务实例中显示ip，而不是显示主机名（兼容老的eureka版本）
-      # 实例名称： 192.168.1.103:lagou-cn.locusc.microserivce.resume.service-resume:8080，我们可以自定义它
+      # 实例名称： 192.168.1.103:future-microservice-resume:8080，我们可以自定义它
       instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}:@project.version@
       # 自定义Eureka元数据
       metadata-map:
