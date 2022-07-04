@@ -17,6 +17,7 @@
         <module>future-project-reactor-explore</module>
         <module>future-reactive-other-explore</module>
         <module>future-reactive-x-explore</module>
+        <module>future-reactive-practice-explore</module>
     </modules>
 
 </project>
