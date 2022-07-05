@@ -1,0 +1,33 @@
+These are the items emitted by the Flux
+
+This vertical line indicates that
+the Flux has completed successfully
+
+This is the timeline of the Flux
+Time flows from left to right
+
+These dotted lines and this box
+indicate that a transformation
+is being applied to the Flux
+The text inside the box shows
+the nature of the transformation
+
+This Flux is the result
+of the transformation
+
+If for some reason the Flux terminates
+abnormally, with an error, the vertical
+line is replaced by an X
+
+In this lesson we'll see different factory methods to create a Flux.
+In imperative synchronous code, it's easy to manage exceptions with familiar try-catch blocks, throw instructions...
+But in an asynchronous context, we have to do things a bit differently. Reactive Streams defines the onError signal to deal with exceptions.
+Note that such an event is terminal: this is the last event the Flux will produce.
+Flux#error produces a Flux that simply emits this signal, terminating immediately:
+
+To finish with Flux, let's try to create a Flux that produces ten elements, at a regular pace.
+In order to do that regular publishing, we can use interval.
+But it produces an infinite stream (like ticks of a clock), and we want to take only 10 elements,
+so don't forget to precise it.
+
+Reactor ships with several operators that can be used to transform data.
