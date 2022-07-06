@@ -1,0 +1,46 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: lagou-service-resume
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/lagou?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 123456
+  jpa:
+    database: MySQL
+    show-sql: true
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl  #避免将驼峰命名转换为下划线命名
+  # nacos配置
+  cloud:
+    nacos:
+      discovery:
+        # 集群中各节点信息都配置在这里（域名-VIP-绑定映射到各个实例的地址信息）
+        server-addr: 127.0.0.1:8848,127.0.0.1:8849,127.0.0.1:8850
+
+      # nacos config 配置
+      config:
+        server-addr: 127.0.0.1:8848,127.0.0.1:8849,127.0.0.1:8850
+        # 锁定server端的配置文件（读取它的配置项）
+        namespace: 07137f0a-bf66-424b-b910-20ece612395a  # 命名空间id
+        group: DEFAULT_GROUP  # 默认分组就是DEFAULT_GROUP，如果使用默认分组可以不配置
+        file-extension: yaml   #默认properties
+        # 根据规则拼接出来的dataId效果：lagou-service-resume.yaml
+        extension-configs[0]:
+          data-id: abc.yaml
+          group: DEFAULT_GROUP
+          refresh: true  #开启扩展dataId的动态刷新
+        extension-configs[1]:
+          data-id: def.yaml
+          group: DEFAULT_GROUP
+          refresh: true  #开启扩展dataId的动态刷新
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+
