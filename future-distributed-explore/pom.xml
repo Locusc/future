@@ -19,6 +19,7 @@
         <module>future-distributed-rpc-explore</module>
         <module>future-distributed-zookeeper-explore</module>
         <module>future-distributed-dubbo-explore</module>
+        <module>future-distributed-transaction-explore</module>
     </modules>
 
 </project>

@@ -3,13 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>future-microservices-explore</artifactId>
+        <artifactId>future-distributed-seata</artifactId>
         <groupId>cn.locusc</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>future-microservice-seata</artifactId>
+    <artifactId>future-distributed-seata-points</artifactId>
 
 
 </project>

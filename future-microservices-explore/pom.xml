@@ -39,7 +39,6 @@
         <module>future-microservice-auto-deliver-nsd-8094</module>
         <module>future-microservice-resume-nacos-sentinel-dubbo-8084</module>
         <module>future-microservice-resume-nacos-sentinel-dubbo-8085</module>
-        <module>future-microservice-seata</module>
     </modules>
 
     <dependencies>
