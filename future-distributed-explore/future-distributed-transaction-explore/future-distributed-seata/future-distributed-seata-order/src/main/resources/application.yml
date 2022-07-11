@@ -1,0 +1,19 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: future-distributed-seata-order
+  profiles:
+    include: seata
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://39.107.96.199:3306/mercy
+    username: root
+    password: wdnmd123
+  # nacos配置
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        username: nacos
+        password: nacos

@@ -12,6 +12,7 @@
 
     <artifactId>future-distributed-seata</artifactId>
     <packaging>pom</packaging>
+
     <modules>
         <module>future-distributed-seata-business</module>
         <module>future-distributed-seata-order</module>

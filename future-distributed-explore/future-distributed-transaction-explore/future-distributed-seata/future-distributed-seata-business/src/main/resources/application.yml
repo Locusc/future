@@ -1,0 +1,24 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: future-distributed-seata-business
+  profiles:
+    include: seata
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://39.107.96.199:3306/mercy
+    username: root
+    password: wdnmd123
+  # nacos配置
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        username: nacos
+        password: nacos
+ribbon:
+  ###指的是建立连接所用的时间，适用于网络状况正常的情况下，两端连接所用的时间。
+  ReadTimeout: 500000
+  ###指的是建立连接后从服务器读取到可用资源所用的时间。
+  ConnectTimeout: 50000
