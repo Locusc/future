@@ -32,3 +32,11 @@ so don't forget to precise it.
 
 Reactor ships with several operators that can be used to transform data.
 
+Are you stuck?
+Sometimes it gets hard to get started and just a nudge might help. While in exercises folder, execute mvn hint:{name_of_exercise} and it will offer help how to solve exercise without giving out full solution. Read exercise requirements carefully, often there is a hint in there too.
+
+Still stuck?
+Hints are just a nudge to steer you in the right direction. If you are just stuck and can't solve the exercise, or you want to compare your solution navigate to solutions branch.
+
+Feedback
+Your feedback is important for maintaining this repo and keep workshop useful. You may post your feedback here.
