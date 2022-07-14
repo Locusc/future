@@ -1,5 +1,9 @@
 https://github.com/Viscent/javamtia/tree/master/JavaMultiThreadInAction
 
+objRef = allocate(IncorrectDCLSingleton.class); //子操作①:分配对象所需的存储空间
+invokeConstructor(objRef); //子操作②:初始化objRef引用的对象
+instance = objRef; //子操作③:将对象引用写入共享变量
+
 <刷新处理器缓存和冲刷处理器缓存的作用>
 前一个动作保证了该锁的当前持有线程能够读取到前一个持有线程对这些数
 据所做的更新，后一个动作保证了该锁的持有线程对这些数据所做的更新对该锁的后续持
@@ -68,6 +72,38 @@ volatile关键字在原子性方面仅保障对被修饰的变量的读操作、
 <volatile关键字的注意点>
 volatile关键字在可见性方面仅仅是保证读线程能够读取到共享变量的相对新值。
 对于引用型变量和数组变量，volatile关键字并不能保证读线程能够读取到相应对象的字段（实例变量、静态变量)、元素的相对新值。
+
+<CAS解读>
+CAS(Compare and Swap)是对一种处理器指令(例如 x86 处理器中的cmpxchg指令)
+的称呼, 不少多线程相关的Java标准库类的实现最终都会借助CAS
+事实上，保障像自增这种比较简单的操作的原子性我们有更好的选择-CAS.
+CAS能够将read-modify-write和check-and-act之类的操作转换为原子操作。
+
+CAS仅保障共享变量更新操作的原子性，它并不保障可见性。
+
+boolean compareAndSwap(Variable v,object A, Object B){
+    if (A == v.get(){   // check:检查变量值是否被其他线程修改过
+        v.set(B); // act:更新变量值
+        return true; // 更新成功
+    }
+}
+return false;//变量值已被其他线程修改，更新失败
+
+<对象发布>
+对象发布是指使对象能够被其作用域之外的线程访问。常见的对象发布形式除了上述的共享 private变量之外，还包括以下几种。
+
+<对象逸出>
+安全发布就是指对象以一种线程安全的方式被发布。
+当一个对象的发布出现我们不期望的结果或者对象发布本身不是我们所期望的时候，我们就称该对象逸出(Escape)。
+逸出应该是我们要尽量避免的,因为它不是一种安全发布。
+
+一个对象在其初始化过程中没有出现 this逸出，我们就称该对象为正确创建的对象( Properly Constructed Object )。
+要安全发布一个正确创建的对象，我们可以根据情况从以下几种方式中选择:
+使用static关键字修饰引用该对象的变量。
+使用final关键字修饰引用该对象的变量。
+使用volatile关键字修饰引用该对象的变量。
+使用AtomicReference来引用该对象。
+对访问该对象的代码进行加锁。
 
 
 
