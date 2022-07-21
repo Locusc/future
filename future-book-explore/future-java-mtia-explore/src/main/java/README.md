@@ -1,3 +1,16 @@
+- 1.走近JAVA世界中的线程
+- 2.多线程编程的目标与挑战
+- 3.JAVA线程同步机制
+- 4.小试牛刀: 玩转线程
+- 5.线程间的协作
+- 6.保障线程安全的设计技术
+- 7.线程的活性故障
+- 8.线程管理
+- 9.JAVA异步线程
+- 10.JAVA多线程程序的调试与测试
+- 11.多线程编程的硬件基础与JAVA内存模型
+- 12.JAVA多线程程序的性能校验
+
 https://github.com/Viscent/javamtia/tree/master/JavaMultiThreadInAction
 
 objRef = allocate(IncorrectDCLSingleton.class); //子操作①:分配对象所需的存储空间
