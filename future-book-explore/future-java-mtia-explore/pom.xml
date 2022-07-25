@@ -35,6 +35,11 @@
             <artifactId>spotbugs-annotations</artifactId>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>org.openjdk.jcstress</groupId>
+            <artifactId>jcstress-core</artifactId>
+            <version>0.14</version>
+        </dependency>
     </dependencies>
 
     <build>

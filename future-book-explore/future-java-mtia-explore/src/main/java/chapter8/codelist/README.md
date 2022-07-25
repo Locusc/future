@@ -1,0 +1,40 @@
+8.5.2 线程池监控
+尽管线程池的大小、工作队列的容量、线程空闲时间限制这些线程池的属性可通过配置的方式进行指定（而不是硬编码在代码中)，
+但是所指定的值是否恰当则需要通过监控来判断。例如，如果我们选择有界队列作为工作队列,那么这个队列的容量以多少为宜呢，
+这需要在软件测试过程中对线程池进行监控来确定。另外，考虑到测试环境和软件实际运行环境总是存在差别的，
+出于软件运维的考虑我们也可能需要对线程池进行监控。ThreadPoolExecutor类提供了对线程池进行监控的相关方法，如表8-2所示。
+此外，ThreadPoolExecutor提供的两个钩子方法( Hook Method ): beforeExecute(Threadt,Runnable r)和
+afterExecute(Thread t,Runnable r)也能够用于实现监控。设executor为任意一个ThreadPoolExecutor实例，
+在任意一个任务r被线程池executor中的任意一个工作者线程t执行前,executor.beforeExecute(t,r)会被执行;当t执行完r之后，
+不管r的执行是否是成功的还是抛出了异常,executor.afterExecute(t,r)始终会被执行。因此，
+如果有必要的话我们可以通过创建ThreadPoolExecutor的子类并在子类的beforeExecute/afterExecute方法实现监控逻辑,比如计算任务执行的平均耗时。
+ 
+
+8.5.3 线程池死锁
+如果线程池中执行的任务在其执行过程中又会向同一个线程池提交另外一个任务,而前一个任务的执行结束又依赖于后一个任务的执行结果，
+那么就有可能出现这样的情形:线程池中的所有工作者线程都处于等待其他任务的处理结果而这些任务仍在工作队列中等待执行，
+这时由于线程池中已经没有可以对工作队列中的任务进行处理的工作者线程,这种等待就会一直持续下去从而形成死锁(Deadlock )。
+因此,适合提交给同一线程池实例执行的任务是相互独立的任务，而不是彼此有依赖关系的任务。对于彼此存在依赖关系的任务，
+我们可以考虑分别使用不同的线程池实例来执行这些任务。
+
+注意,同一个线程池只能用于执行相互独立的任务。彼此有依赖关系的任务需要提交给不同的线程池执行以避免死锁。
+8.5.4工作者线程的异常终止
+如果任务是通过ThreadPoolExecutor.submit调用提交给线程池的，那么这些任务在其执行过程中即便是抛出了未捕获的异常也不会导致对其进行执行的工作者线程异常终止。
+当然，上文我们已经介绍过这种情形下任务所抛出的异常可以通过 Future.get()所抛出的ExecutionException来获取。
+
+如果任务是通过ThreadPoolExecutor.execute方法提交给线程池的,那么这些任务在其执行过程中一旦抛出了未捕获的异常，则对其进行执行的工作者线程就会异常终止。
+尽管ThreadPoolExecutor能够侦测到这种情况并在工作者线程异常终止的时候创建并启动新的替代工作者线程，但是由于线程的创建与启动都有其开销，
+因此这种情形下我们会尽量避免任务在其执行过程中抛出未捕获的异常。
+我们可以通过ThreadPoolExecutor的构造器参数或者ThreadPoolExecutor.setThreadFactory方法为线程池关联一个线程工厂。
+在这个线程工厂里面我们可以为其创建的工作者线程关联一个UncaughtExceptionHandler，
+通过这个关联的UncaughtExceptionHandler我们可以侦测到任务执行过程中抛出的未捕获异常。
+不过，由于ThreadPoolExecutor内部实现的原因，只有通过ThreadPoolExecutor.execute调用(而不是 ThreadPoolExecutor.submit调用）提交给线程池执行的任务，
+其执行过程中抛出的未捕获异常才会导致UncaughtExceptionHandler.uncaughtException方法被调用。
+        
+注意,通过ThreadPoolExecutor.submit调用提交给线程池执行的任务，其执行过程中抛出的未捕获异常并不会导致与该线程池中的工作者线程关联的UncaughtExceptionHandler的uncaughtException方法被调用。
+
+
+
+
+
+
