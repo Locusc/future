@@ -18,6 +18,7 @@
         <module>future-english-notebook</module>
         <module>future-spring-deep-analysis-explore</module>
         <module>future-java-mtia-explore</module>
+        <module>future-deep-understanding-of-jvm-explore</module>
     </modules>
 
 </project>
