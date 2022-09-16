@@ -1,0 +1,28 @@
+server:
+  port: 9093
+
+spring:
+#  functional:
+#    enabled: false
+  cloud:
+    function:
+      web:
+        # 仅支持MVC的端点
+        path: /func
+      # 直接将函数组合映射到/路径, 主要是命令行不能请求/toLowerCase,length
+      definition: toLowerCase|length
+      # 增加; 表示导出的函数被限制为toLowerCase|length以及toUpperCase|length
+      # definition: toLowerCase|length;toUpperCase|length
+
+logging:
+  level:
+    org:
+      springframework:
+        cloud:
+          function: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "functions"
