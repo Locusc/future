@@ -2,17 +2,28 @@ server:
   port: 9093
 
 spring:
-#  functional:
-#    enabled: false
+  #  functional:
+  #    enabled: false
   cloud:
     function:
       web:
         # 仅支持MVC的端点
         path: /func
-      # 直接将函数组合映射到/路径, 主要是命令行不能请求/toLowerCase,length
-      definition: toLowerCase|length
-      # 增加; 表示导出的函数被限制为toLowerCase|length以及toUpperCase|length
-      # definition: toLowerCase|length;toUpperCase|length
+      # 直接将函数组合映射到/路径, 主要是命令行不能请求/lowercase,length
+      # definition: lowercase|length
+      # 增加';',限制调用为/lowercase,length以及/uppercase,length
+      # definition: lowercase|length;uppercase|length
+      routing-expression: "'uppercase'"
+      configuration:
+        split:
+          output-header-mapping-expression:
+            keyOut1: "'output str'"
+            keyOut2: headers.contentType
+          input-header-mapping-expression:
+            key1: headers.path.split('/')[0]
+            key2: headers.path.split('/')[1]
+            key3: headers.path
+
 
 logging:
   level:
@@ -25,4 +36,4 @@ management:
   endpoints:
     web:
       exposure:
-        include: "functions"
+        include: "*"
