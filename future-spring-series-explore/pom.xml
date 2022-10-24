@@ -22,5 +22,7 @@
         <module>future-spring-comprehensive-explore</module>
         <module>future-spring-boot-explore</module>
         <module>future-spring-security-explore</module>
+        <module>future-spring-shell-explore</module>
+        <module>future-spring-batch-explore</module>
     </modules>
 </project>
