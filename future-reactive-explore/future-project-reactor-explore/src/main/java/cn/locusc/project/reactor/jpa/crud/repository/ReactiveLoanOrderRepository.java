@@ -23,7 +23,7 @@ public class ReactiveLoanOrderRepository
 
     /**
      * 查询指定范围的订单
-     * @return reactor.core.publisher.Flux<cn.hrfax.webflux.locusc.LoanOrder>
+     * @return reactor.core.publisher.Flux<cn.locusc.project.reactor.jpa.crud.entity.LoanOrder>
      */
     public Flux<LoanOrder> findOrderByIdBetween(Publisher<Integer> lowerPublisher, Publisher<Integer> upperPublisher) {
         return Mono.zip(Mono.from(lowerPublisher), Mono.from(upperPublisher))
@@ -35,7 +35,7 @@ public class ReactiveLoanOrderRepository
 
     /**
      * 模糊查询
-     * @return reactor.core.publisher.Flux<cn.hrfax.webflux.locusc.LoanOrder>
+     * @return reactor.core.publisher.Flux<cn.locusc.project.reactor.jpa.crud.entity.LoanOrder>
      */
     public Flux<LoanOrder> findOrderLikeType() {
         return Mono.fromCallable(delegate::findOrderLikeType)

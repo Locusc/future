@@ -17,14 +17,14 @@ public interface LoanOrderJpaRepository extends CrudRepository<LoanOrder, Intege
 
     /**
      * 查询指定范围 jpql
-     * @return java.util.List<cn.hrfax.webflux.locusc.LoanOrder>
+     * @return java.util.List<cn.locusc.project.reactor.jpa.crud.entity.LoanOrder>
      */
     @Query("from LoanOrder o  where o.id between ?1 and ?2")
     List<LoanOrder> findOrdersByIdBetween(int lower, int upper);
 
     /**
      * 模糊查询 jpql
-     * @return java.util.List<cn.hrfax.webflux.locusc.LoanOrder>
+     * @return java.util.List<cn.locusc.project.reactor.jpa.crud.entity.LoanOrder>
      */
     @Query("from LoanOrder o  where o.orderType like '%CAR%'")
     List<LoanOrder> findOrderLikeType();

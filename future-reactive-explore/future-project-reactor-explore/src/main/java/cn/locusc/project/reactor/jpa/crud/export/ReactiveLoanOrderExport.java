@@ -77,7 +77,7 @@ public class ReactiveLoanOrderExport implements CommandLineRunner {
 
     /**
      * 创建10个订单数据
-     * @return java.util.function.Supplier<reactor.core.publisher.Flux<cn.hrfax.webflux.locusc.LoanOrder>>
+     * @return java.util.function.Supplier<reactor.core.publisher.Flux< cn.locusc.project.reactor.jpa.crud.entity.LoanOrder>>
      */
     private Supplier<Flux<LoanOrder>> createLoanOrder() {
         return () -> Flux.range(0, 10)
@@ -86,7 +86,7 @@ public class ReactiveLoanOrderExport implements CommandLineRunner {
 
     /**
      * 创建订单实例
-     * @return cn.hrfax.webflux.locusc.LoanOrder
+     * @return cn.locusc.project.reactor.jpa.crud.entity.LoanOrder
      */
     private LoanOrder loanOrderInstance(Integer m) {
         return new LoanOrder(
