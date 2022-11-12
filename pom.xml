@@ -58,5 +58,6 @@
         <module>future-distributed-explore</module>
         <module>future-netty-explore</module>
         <module>future-microservices-explore</module>
+        <module>future-database</module>
     </modules>
 </project>
