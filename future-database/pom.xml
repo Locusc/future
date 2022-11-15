@@ -10,6 +10,11 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
+    <packaging>pom</packaging>
     <artifactId>future-database</artifactId>
+
+    <modules>
+        <module>future-sharding-sphere</module>
+    </modules>
 
 </project>
