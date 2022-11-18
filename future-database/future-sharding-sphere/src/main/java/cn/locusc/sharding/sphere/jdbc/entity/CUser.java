@@ -1,16 +1,14 @@
 package cn.locusc.sharding.sphere.jdbc.entity;
 
 import lombok.Data;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Data
-@ToString
 @Entity
-@Table(name = "city")
-public class City implements Serializable {
+@Table(name = "c_user")
+public class CUser implements Serializable {
 
     @Id
     @Column(name = "id")
@@ -20,7 +18,8 @@ public class City implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "province")
-    private String province;
+    @Column(name = "pwd")//逻辑列名
+    private String pwd;
 
 }
+
