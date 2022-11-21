@@ -1,0 +1,30 @@
+spring:
+  shardingsphere:
+    datasource:
+      names: ds0
+      ds0:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3306/lagou1
+        username: root
+        password: root
+    encrypt:
+      tables:
+        c_user:
+          columns:
+            pwd:
+              plain-column: pwd_plain
+              cipher-column: pwd_cipher
+              encryptor: locusc_pwd
+      encryptors:
+        locusc_pwd:
+          type: aes
+          props:
+            aes:
+              key:
+                value: 123456
+    props:
+      query:
+        with:
+          cipher:
+            column: false # 是否直接使用密文列

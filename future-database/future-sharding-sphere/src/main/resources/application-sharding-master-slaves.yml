@@ -1,0 +1,59 @@
+spring:
+  shardingsphere:
+    datasource:
+      names: master0,slave0,slave1,master1,slave2,slave3
+      master0:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3306/master0?useUnicode=true&characterEncoding=utf-8&useSSL=false
+        username: root
+        password: root
+      slave0:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3306/slave0?useSSL=false
+        username: root
+        password: root
+      slave1:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3306/slave1?useSSL=false
+        username: root
+        password: root
+      master1:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3306/master1?useUnicode=true&characterEncoding=utf-8&useSSL=false
+        username: root
+        password: root
+      slave2:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3306/slave2?useSSL=false
+        username: root
+        password: root
+      slave3:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3306/slave3?useSSL=false
+        username: root
+        password: root
+    sharding:
+      tables:
+        b_order:
+          database-strategy:
+            inline:
+              sharding-column: company_id
+              algorithm-expression: master$->{company_id % 2}
+          actual-data-nodes: master$->{0..1}.b_order$->{0..1}
+          table-strategy:
+            inline:
+              sharding-column: id
+              algorithm-expression: b_order$->{id % 2}
+      master-slave-rules:
+        master0:
+          master-data-source-name: master0
+          slave-data-source-names: slave0, slave1
+        master1:
+          master-data-source-name: master1
+          slave-data-source-names: slave2, slave3
