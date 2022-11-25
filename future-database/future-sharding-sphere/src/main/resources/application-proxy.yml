@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    # 这里使用的是逻辑库名, 由sharding-sphere-proxy代理
+    url: jdbc:mysql://localhost:3307/locusc_db
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: root
