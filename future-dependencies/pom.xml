@@ -344,6 +344,24 @@
                 <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
                 <version>4.1.0</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.apache.shardingsphere</groupId>
+                <artifactId>sharding-transaction-xa-core</artifactId>
+                <version>4.1.0</version>
+            </dependency>
+
+            <!-- <dependency>
+                <groupId>io.shardingsphere</groupId>
+                <artifactId>sharding-transaction-base-saga</artifactId>
+                <version>4.1.0</version>
+            </dependency> -->
+
+            <dependency>
+                <groupId>org.apache.shardingsphere</groupId>
+                <artifactId>sharding-transaction-base-seata-at</artifactId>
+                <version>4.1.0</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
