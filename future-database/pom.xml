@@ -15,6 +15,7 @@
 
     <modules>
         <module>future-sharding-sphere</module>
+        <module>future-mycat</module>
     </modules>
 
 </project>
