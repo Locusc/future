@@ -9,6 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <packaging>pom</packaging>
     <artifactId>future-spring-security-explore</artifactId>
     <description>spring-security底层探索</description>
 
